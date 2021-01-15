@@ -1,11 +1,38 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
-
 body {
-  background: $primary-background;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .hidden {
   display: none;
+}
+
+.user-wrapper {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 4fr 0.5fr;
+  grid-template-areas:
+    "user-heading user-heading user-heading user-heading"
+    "user-pending-trips user-main-form user-main-form user-main-form"
+    "user-pending-trips user-pending-trips user-pending-trips user-pending-trips";
+    grid-gap: 0.2rem;
+}
+
+.heading {
+  background-color: cornflowerblue;
+}
+
+.pending-trips {
+  background-color: chocolate;
+}
+
+.form {
+  background-color: limegreen;
+}
+
+.past-trips {
+  background-color: maroon;
 }
