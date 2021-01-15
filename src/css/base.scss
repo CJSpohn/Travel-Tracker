@@ -5,34 +5,42 @@ body {
   padding: 0;
 }
 
-.hidden {
-  display: none;
+h2 {
+  text-align: center;
 }
 
 .user-wrapper {
   display: grid;
   height: 100vh;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  grid-template-rows: 0.5fr 4fr 0.5fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.6fr 3.5fr 1fr;
   grid-template-areas:
-    "user-heading user-heading user-heading user-heading"
+    "heading heading heading heading"
     "user-pending-trips user-main-form user-main-form user-main-form"
-    "user-pending-trips user-pending-trips user-pending-trips user-pending-trips";
+    "user-past-trips user-past-trips user-past-trips user-past-trips";
     grid-gap: 0.2rem;
 }
 
 .heading {
   background-color: cornflowerblue;
+  grid-area: heading;
 }
 
 .pending-trips {
   background-color: chocolate;
+  grid-area: user-pending-trips;
 }
 
 .form {
   background-color: limegreen;
+  grid-area: user-main-form;
 }
 
 .past-trips {
+  grid-area: user-past-trips;
   background-color: maroon;
+}
+
+.hidden {
+  display: none;
 }
