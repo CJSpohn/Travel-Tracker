@@ -2,18 +2,27 @@
 <html lang="en-US">
   <head>
     <title>Travel Tracker</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
   </head>
   <body>
     <div class="login-wrapper hidden"></div>
     <div class="user-wrapper">
       <header id="heading" class="heading heading--user">
-        <h1>Welcome, User</h1>
+        <div class="vertical-wrapper">
+          <h1 class="logo">Travel Tracker</h1>
+          <p class="sub-logo">We are where you're going</p>
+        </div>
+        <h1 class="heading__text">Welcome, User</h1>
+        <button class="log-out">Log Out</button>
       </header>
       <section id="user-pending-trips" class="pending-trips">
         <h2>Pending Trips</h2>
       </section>
       <section id="user-main-form" class="form">
         <h2>Let's Go!</h2>
+        <section class="form__background">
+          <section class="form__wrapper"></section>
+        </section>
       </section>
       <footer id="user-past-trips" class="past-trips">
         <h2>Past Destinations</h2>
