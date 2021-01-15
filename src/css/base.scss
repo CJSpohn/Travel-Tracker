@@ -82,10 +82,11 @@ p {
 .form__wrapper {
   @extend .vertical-wrapper;
   margin: auto;
-  margin-top: 15%;
+  margin-top: 8%;
   border-radius: 50px;
   height: 70%;
   width: 50%;
+  padding: 5%;
 }
 
 .heading__text {
