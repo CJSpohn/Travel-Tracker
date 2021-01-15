@@ -1,6 +1,4 @@
 body {
-  height: 100%;
-  width: 100%;
   margin: 0;
   padding: 0;
 }
@@ -43,4 +41,29 @@ h2 {
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 1000px) {
+  .user-wrapper {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-rows: 0.6fr 3.5fr 1fr;
+    grid-template-areas:
+      "heading heading heading heading"
+      "user-pending-trips user-main-form user-main-form user-main-form"
+      "user-past-trips user-past-trips user-past-trips user-past-trips";
+      grid-gap: 0.2rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .user-wrapper {
+    height: 150vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 1.5fr 4fr 1fr;
+    grid-template-areas:
+    "heading"
+    "user-pending-trips"
+    "user-main-form"
+    "user-past-trips";
+  }
 }
