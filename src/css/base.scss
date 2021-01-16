@@ -47,7 +47,7 @@ p {
   justify-content: space-between;
   padding: 0 1rem;
   background: url('../images/beach.jpg');
-  background-size: 100% 150%;
+  background-size: 100% 120%;
   grid-area: heading;
 }
 
@@ -149,6 +149,10 @@ p {
   height: 100%;
   width: 70%;
   text-align: center;
+}
+
+.form__list {
+  width: 80%;
 }
 
 fieldset {

@@ -31,6 +31,31 @@ let domUpdates = {
       document.importNode(template, true));
   },
 
+  populateDestinations(destinations) {
+    const list = document.querySelector('.form__list');
+    destinations.forEach(destination => {
+      list.innerHTML += `
+      <option class="form__list-element" value="${destination.destination}">${destination.destination}</option>
+      `
+    })
+  },
+
+  setStartDate() {
+    const calendar = document.querySelector('.start-date')
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1;
+    const yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd='0'+dd
+    }
+    if(mm < 10 ) {
+      mm='0'+mm
+    }
+    today = yyyy + '-' + mm + '-' + dd;
+    calendar.setAttribute("min", today);
+  },
+
   hidePendingHeader() {
     document.querySelector('.pending-trips__header').classList.add('hidden')
   },

@@ -36,9 +36,10 @@ const onStartup = () => {
       trips = promises[1].trips;
       destinations = promises[2].destinations;
       domUpdates.greetUser(currentUser);
+      domUpdates.populateDestinations(destinations);
       sortUserTrips(currentUser.findUserTrips(trips));
     })
-
+    domUpdates.setStartDate();
 }
 
 
