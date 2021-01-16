@@ -16,9 +16,10 @@ const onStartup = () => {
 
   Promise.all([usersPromise, tripsPromise])
     .then(promises => {
-      currentUser = promises[0].travelers[0];
+      currentUser = new User(promises[0].travelers[9]);
       trips = promises[1].trips;
       domUpdates.greetUser(currentUser);
+      domUpdates.populateUserInfo(currentUser, trips);
     })
 
 }
