@@ -30,9 +30,9 @@ p {
 // -------------------LAYOUT-------------------
 .user-wrapper {
   display: grid;
-  height: 150vh;
+  height: 180vh;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.6fr 3.5fr 1fr;
+  grid-template-rows: 0.8fr 3.5fr 1fr;
   grid-template-areas:
     "heading heading heading heading"
     "user-pending-trips user-main-form user-main-form user-main-form"
@@ -42,35 +42,57 @@ p {
 
 .heading {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: flex-start;
   padding: 0 1rem;
   background: url('../images/beach.jpg');
   background-size: 100% 150%;
   grid-area: heading;
 }
 
-.form-display {
+.main-display {
   grid-area: user-main-form;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
 .past-trips {
   grid-area: user-past-trips;
   background-color: maroon;
+  padding: 10px;
 }
 
 .pending-trips {
   background-color: chocolate;
   grid-area: user-pending-trips;
+  padding: 10px;
 }
 
 // -------------------STYLING-------------------
-.heading__text {
-  margin-left: -5rem;
+.logo-wrapper {
+  text-align: center;
+  height: 30%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 2%;
+  background: white;
+}
+
+.welcome {
+  margin-top: 7vh;
+  font-size: 3rem;
+}
+
+.log-out {
+  margin-top: 2%;
+  height: 30%;
+}
+
+.main-display__header {
+  margin-top: 4%;
+  font-size: 2rem;
 }
 
 // ------------------FORM-----------------
@@ -116,13 +138,13 @@ p {
 
 .form {
   height: 100%;
+  width: 70%;
   text-align: center;
 }
 
 fieldset {
   @extend .vertical-wrapper;
   text-align: center;
-  height: 45%;
   border-radius: 10px;
   margin: 2%;
 }
@@ -145,8 +167,8 @@ fieldset {
 
 @media (max-width: 1000px) {
   .user-wrapper {
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    grid-template-rows: 0.6fr 3.5fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 3.5fr 1fr;
     grid-template-areas:
       "heading heading heading heading"
       "user-pending-trips user-main-form user-main-form user-main-form"
@@ -155,11 +177,26 @@ fieldset {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
+  .form__wrapper {
+    width: 80%;
+  }
+}
+
+@media (max-width: 560px) {
+  .heading {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .welcome {
+    margin: 0;
+  }
+
   .user-wrapper {
-    height: 150vh;
+    height: 200vh;
     grid-template-columns: 1fr;
-    grid-template-rows: 0.5fr 1.5fr 4fr 1fr;
+    grid-template-rows: 1fr 1.5fr 6fr 1.5fr;
     grid-template-areas:
     "heading"
     "user-pending-trips"

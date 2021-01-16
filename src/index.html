@@ -8,18 +8,28 @@
     <div class="login-wrapper hidden"></div>
     <div class="user-wrapper">
       <header id="heading" class="heading heading--user">
-        <div class="vertical-wrapper">
+        <div class="logo-wrapper">
           <h1 class="logo">Travel Tracker</h1>
           <p class="sub-logo">We are where you're going</p>
         </div>
-        <h1 class="heading__text">Welcome, User</h1>
+        <h1 class="welcome">Welcome, User</h1>
         <button class="log-out">Log Out</button>
       </header>
       <section id="user-pending-trips" class="pending-trips">
         <h2>Pending Trips</h2>
+        <section class="pending-trips__trips">
+          <div class="pending-trip">
+            <div>
+              <hr>
+              <p>To: <span class="pending-trip__destination"> Aruba</span></p>
+              <p>Leaving on: <span class="pending-trip__date">Jan 20th</span></p>
+              <p>Travelers: <span class="pending-trip__date">4</span></p>
+              <p>Days: <span class="pending-trip__date">8</span></p>
+            </div>
+          </div>
+        </section>
       </section>
-      <section id="user-main-form" class="form-display">
-        <h2>Let's Go!</h2>
+      <section id="user-main-form" class="main-display">
         <section class="form__background">
           <section class="form__wrapper">
             <form class="form">
@@ -48,7 +58,7 @@
               </fieldset>
               <button class="form__button input__cost-button">Caclulate Cost</button>
               <div class="form__cost-wrapper hidden">
-                <p>Your trip will cost a total of</p>
+                <p>Your trip will cost</p>
                 <p class="input__cost-display">840 dollars</p>
                 <p>Would you like to confirm this trip?</p>
                 <div class="form__confirm-buttons-wrapper">
