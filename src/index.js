@@ -1,2 +1,6 @@
 import './css/base.scss';
-import './images/turing-logo.png'
+
+import domUpdates from './domUpdates';
+
+import Trip from './Trip';
+import User from './User';
