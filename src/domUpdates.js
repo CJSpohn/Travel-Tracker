@@ -3,9 +3,10 @@ let domUpdates = {
     document.querySelector('.js-welcome').innerText += ' ' + user.name.split(' ')[0]
   },
 
-  populateUserInfo(user, trips) {
-    const userTrips = user.findUserTrips(trips)
+  addPendingTrip(trip) {
+    console.log(trip)
   }
+
 }
 
 export default domUpdates;
