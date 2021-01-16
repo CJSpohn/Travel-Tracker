@@ -1,16 +1,12 @@
 class User {
-  constructor(id, name, travelerType) {
-    this.id = id;
-    this.name = name;
-    this.travelerType = travelerType;
-    this.trips = [];
-    this.totalSpent = 0;
+  constructor(user) {
+    this.id = user.id;
+    this.name = user.name;
+    this.travelerType = user.travelerType;
   }
 
   findUserTrips (allTrips) {
-    this.trips = allTrips.filter(trip => {
-      trip.userID === this.id
-    })
+    return allTrips.filter(trip => trip.userID === this.id)
   }
 
   calculateTotalSpent(destinations) {

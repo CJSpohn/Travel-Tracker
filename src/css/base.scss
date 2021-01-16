@@ -32,21 +32,22 @@ p {
   display: grid;
   height: 180vh;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.8fr 2fr 2fr;
+  grid-template-rows: 0.8fr 2fr 2fr 1fr;
   grid-template-areas:
     "heading heading heading heading"
     "user-pending-trips user-main-form user-main-form user-main-form"
-    "user-past-trips user-main-form user-main-form user-main-form";
+    "user-pending-trips user-main-form user-main-form user-main-form"
+    "user-past-trips user-past-trips user-past-trips user-past-trips";
     grid-gap: 0.2rem;
 }
 
 .heading {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
   padding: 0 1rem;
   background: url('../images/beach.jpg');
-  background-size: 100% 150%;
+  background-size: 100% 120%;
   grid-area: heading;
 }
 
@@ -61,6 +62,7 @@ p {
 .past-trips {
   grid-area: user-past-trips;
   padding: 10px;
+  max-width: 93vw;
 }
 
 .pending-trips {
@@ -75,7 +77,7 @@ p {
   padding: 10px;
   border-radius: 10px;
   margin-top: 2%;
-  background: white;
+  background: lightgrey;
 }
 
 .welcome {
@@ -85,7 +87,11 @@ p {
 
 .log-out {
   margin-top: 2%;
-  height: 30%;
+  height: 20%;
+  background: lightgrey;
+  &:hover {
+    background: grey;
+  }
 }
 
 .pending-trips__header,
@@ -145,6 +151,10 @@ p {
   text-align: center;
 }
 
+.form__list {
+  width: 80%;
+}
+
 fieldset {
   @extend .vertical-wrapper;
   text-align: center;
@@ -169,14 +179,23 @@ fieldset {
 // ----------------------PAST TRIPS-------------------
 .past-trips__wrapper {
   display: flex;
+  overflow-x: scroll;
 }
 
 .past-trips__trip {
+  display: flex;
+  flex-direction: column;
   margin: 10px;
 }
 
 .past-trips__image {
   width: 200px;
+}
+
+.past-trips__trip-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }
 
 
@@ -193,11 +212,23 @@ fieldset {
     "user-main-form"
     "user-past-trips";
   }
+
+  .sub-logo {
+    display: none;
+  }
 }
 
 @media (max-width: 800px) {
   .form__wrapper {
-    width: 80%;
+    width: 70%;
+  }
+
+  .sub-logo {
+    display: none;
+  }
+
+  .welcome {
+    display: none;
   }
 }
 
@@ -220,5 +251,13 @@ fieldset {
     "user-pending-trips"
     "user-main-form"
     "user-past-trips";
+  }
+
+  .form__background {
+    width: 95%;
+  }
+
+  .log-out {
+    margin-bottom: 5px;
   }
 }
