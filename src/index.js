@@ -13,8 +13,11 @@ let currentUser, trips, destinations;
 const sortUserTrips = (trips) => {
   trips.forEach(trip => {
     if (trip.status === 'pending') {
-      domUpdates.hideHeader();
+      domUpdates.hidePendingHeader();
       domUpdates.addPendingTrip(trip, destinations)
+    } else {
+      domUpdates.hidePastHeader();
+      domUpdates.addPastTrip(trip, destinations)
     }
   })
 }

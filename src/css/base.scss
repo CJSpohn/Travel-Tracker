@@ -32,11 +32,12 @@ p {
   display: grid;
   height: 180vh;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.8fr 2fr 2fr;
+  grid-template-rows: 0.8fr 2fr 2fr 1fr;
   grid-template-areas:
     "heading heading heading heading"
     "user-pending-trips user-main-form user-main-form user-main-form"
-    "user-past-trips user-main-form user-main-form user-main-form";
+    "user-pending-trips user-main-form user-main-form user-main-form"
+    "user-past-trips user-past-trips user-past-trips user-past-trips";
     grid-gap: 0.2rem;
 }
 
@@ -169,14 +170,23 @@ fieldset {
 // ----------------------PAST TRIPS-------------------
 .past-trips__wrapper {
   display: flex;
+  overflow-x: scroll;
 }
 
 .past-trips__trip {
+  display: flex;
+  flex-direction: column;
   margin: 10px;
 }
 
 .past-trips__image {
   width: 200px;
+}
+
+.past-trips__trip-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }
 
 

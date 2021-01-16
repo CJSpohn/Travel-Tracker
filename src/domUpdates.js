@@ -5,7 +5,7 @@ let domUpdates = {
 
   addPendingTrip(trip, destinations) {
     let tripDestination = destinations.find(destination => destination.id === trip.destinationID);
-    const template = document.querySelector('.pending-trip').content;
+    const template = document.querySelector('.pending-trips__trip').content;
     const destination = template.querySelector('.pending-trip__destination');
     const date = template.querySelector('.pending-trip__date');
     const travelers = template.querySelector('.pending-trip__travelers');
@@ -18,8 +18,25 @@ let domUpdates = {
       document.importNode(template, true));
   },
 
-  hideHeader() {
+  addPastTrip(trip, destinations) {
+    let tripDestination = destinations.find(destination => destination.id === trip.destinationID);
+    const template = document.querySelector('.past-trips__trip').content;
+    const destination = template.querySelector('.past-trips__destination');
+    const date = template.querySelector('.past-trips__date');
+    const image = template.querySelector('.past-trips__image');
+    destination.textContent = tripDestination.destination;
+    date.textContent = trip.date;
+    image.src = tripDestination.image;
+    document.querySelector('.past-trips__wrapper').appendChild(
+      document.importNode(template, true));
+  },
+
+  hidePendingHeader() {
     document.querySelector('.pending-trips__header').classList.add('hidden')
+  },
+
+  hidePastHeader() {
+    document.querySelector('.past-trips__header').classList.add('hidden')
   }
 
 }
