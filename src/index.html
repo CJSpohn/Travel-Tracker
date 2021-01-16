@@ -17,16 +17,15 @@
       </header>
       <section id="user-pending-trips" class="pending-trips">
         <h2>Pending Trips</h2>
-        <section class="pending-trips__trips">
-          <div class="pending-trip">
-            <div>
+        <section class="pending-trips__wrapper">
+          <h3 class="pending-trips__header">You have no pending trips.</h3>
+          <template class="pending-trip">
               <hr>
               <p>To: <span class="pending-trip__destination"> Aruba</span></p>
               <p>Leaving on: <span class="pending-trip__date">Jan 20th</span></p>
               <p>Travelers: <span class="pending-trip__date">4</span></p>
               <p>Days: <span class="pending-trip__date">8</span></p>
-            </div>
-          </div>
+          </template>
         </section>
       </section>
       <section id="user-main-form" class="main-display">
@@ -73,6 +72,14 @@
       </section>
       <footer id="user-past-trips" class="past-trips">
         <h2>Past Destinations</h2>
+        <h3 class="past-trips__header">You have no past trips!</h3>
+        <section class="past-trips__wrapper">
+          <template class="past-trips__trip">
+            <img class="past-trips__image" src="https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80" alt="A beautiful picture of Cabo">
+            <h3>Cabo!</h3>
+            <p>On <span class="past-trips__date">July 8th, 2019</span></p>
+          </template>
+        </section>
       </footer>
     </div>
     <div class="agent-wrapper hidden"></div>

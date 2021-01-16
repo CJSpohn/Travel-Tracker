@@ -32,11 +32,11 @@ p {
   display: grid;
   height: 180vh;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.8fr 3.5fr 1fr;
+  grid-template-rows: 0.8fr 2fr 2fr;
   grid-template-areas:
     "heading heading heading heading"
     "user-pending-trips user-main-form user-main-form user-main-form"
-    "user-past-trips user-past-trips user-past-trips user-past-trips";
+    "user-past-trips user-main-form user-main-form user-main-form";
     grid-gap: 0.2rem;
 }
 
@@ -60,12 +60,10 @@ p {
 
 .past-trips {
   grid-area: user-past-trips;
-  background-color: maroon;
   padding: 10px;
 }
 
 .pending-trips {
-  background-color: chocolate;
   grid-area: user-pending-trips;
   padding: 10px;
 }
@@ -88,6 +86,11 @@ p {
 .log-out {
   margin-top: 2%;
   height: 30%;
+}
+
+.pending-trips__header,
+.past-trips__header {
+  text-align: center;
 }
 
 .main-display__header {
@@ -163,17 +166,32 @@ fieldset {
   display: none;
 }
 
+// ----------------------PAST TRIPS-------------------
+.past-trips__wrapper {
+  display: flex;
+}
+
+.past-trips__trip {
+  margin: 10px;
+}
+
+.past-trips__image {
+  width: 200px;
+}
+
+
 // -------------------MEDIA QUERIES-------------------
 
 @media (max-width: 1000px) {
   .user-wrapper {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 3.5fr 1fr;
+    height: 200vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.5fr 6fr 1.5fr;
     grid-template-areas:
-      "heading heading heading heading"
-      "user-pending-trips user-main-form user-main-form user-main-form"
-      "user-past-trips user-past-trips user-past-trips user-past-trips";
-      grid-gap: 0.2rem;
+    "heading"
+    "user-pending-trips"
+    "user-main-form"
+    "user-past-trips";
   }
 }
 
