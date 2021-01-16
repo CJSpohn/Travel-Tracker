@@ -11,14 +11,21 @@ class Trip {
   }
 
   calculateCost(destinations) {
-    let totalSpent;
+    let totalSpent = 0;
     const destination = destinations.find(destination => destination.id === this.destinationID);
     totalSpent += destination.estimatedFlightCostPerPerson * this.travelers;
     totalSpent += destination.estimatedLodgingCostPerDay * this.duration;
-    return totalSpent
+    return this.commafy(totalSpent)
   }
 
-  
+  commafy(cost) {
+    const digits = cost.toString().split('')
+    if (digits.length > 3 && digits.length < 6) {
+      digits.splice(digits.length - 3, 0, ',')
+      return digits.join('')
+    }
+  }
+
 }
 
 

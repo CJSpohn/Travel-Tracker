@@ -36,7 +36,7 @@
               <fieldset>
                 <div class="form__input-wrapper">
                   <label for="destination">Choose your destination</label>
-                  <select class="form__list" name="destination" >
+                  <select class="form__list" name="destination">
                   </select>
                 </div>
                 <div class="form__input-wrapper">
@@ -45,14 +45,14 @@
                 </div>
                 <div class="form__input-wrapper">
                   <label for="travelers">Number of Travelers</label>
-                  <input type="text" name="travelers">
+                  <input class="travelers" type="text" name="travelers">
                 </div>
                 <div class="form__input-wrapper">
                   <label for="duration">How many days would you like to stay?</label>
-                  <input id="duration" name="duration" type="text">
+                  <input class="duration" name="duration" type="text">
                 </div>
               </fieldset>
-              <button class="form__button input__cost-button">Caclulate Cost</button>
+              <button class="form__button input__cost-button" type="button">Caclulate Cost</button>
               <div class="form__cost-wrapper hidden">
                 <p>Your trip will cost</p>
                 <p class="input__cost-display">840 dollars</p>

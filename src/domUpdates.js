@@ -56,6 +56,33 @@ let domUpdates = {
     calendar.setAttribute("min", today);
   },
 
+  updateCost(cost) {
+    const costDisplay = document.querySelector('.input__cost-display');
+    costDisplay.innerText = `$${cost}`
+  },
+
+  revealCostDisplay(cost) {
+    this.hideCalculateButton();
+    this.revealConfirmScreen();
+    this.updateCost(cost)
+  },
+
+  revealConfirmScreen() {
+    document.querySelector('.form__cost-wrapper').classList.remove('hidden');
+  },
+
+  hideConfirmScreen() {
+    document.querySelector('.form__cost-wrapper').classList.add('hidden');
+  },
+
+  hideCalculateButton() {
+    document.querySelector('.input__cost-button').classList.add('hidden');
+  },
+
+  revealCalculateButton() {
+    costButton = document.querySelector('.input__cost-button').classList.remove('hidden');
+  },
+
   hidePendingHeader() {
     document.querySelector('.pending-trips__header').classList.add('hidden')
   },

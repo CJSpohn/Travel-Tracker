@@ -7,6 +7,7 @@ import Trip from './Trip';
 import User from './User';
 
 const signOutButton = document.querySelector('.log-out');
+const costButton = document.querySelector('.input__cost-button');
 
 let currentUser, trips, destinations;
 
@@ -42,6 +43,26 @@ const onStartup = () => {
     domUpdates.setStartDate();
 }
 
+const calculateTrip = () => {
+  const destinationName = document.querySelector('.form__list').value;
+  const startDate = document.querySelector('.start-date').value.replaceAll('-', '/');
+  const travelers = document.querySelector('.travelers').value;
+  const duration = document.querySelector('.duration').value;
+  const id = trips.length + 1;
+  const destinationId = destinations.find(destination => destination.destination === destinationName).id;
+  const tripDetails = {
+    id: id,
+    destinationID: destinationId,
+    travelers: travelers,
+    duration: duration,
+    date: startDate,
+  }
+  const currentTrip = new Trip(currentUser, tripDetails);
+  const tripCost = currentTrip.calculateCost(destinations);
+  domUpdates.revealCostDisplay(tripCost);
+}
+
 
 window.onload = onStartup();
+costButton.addEventListener('click', calculateTrip)
 // signOutButton.addEventListener('click', log)
