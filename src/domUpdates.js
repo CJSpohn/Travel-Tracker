@@ -80,7 +80,7 @@ let domUpdates = {
   },
 
   revealCalculateButton() {
-    costButton = document.querySelector('.input__cost-button').classList.remove('hidden');
+    document.querySelector('.input__cost-button').classList.remove('hidden');
   },
 
   hidePendingHeader() {

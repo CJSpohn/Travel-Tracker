@@ -65,11 +65,16 @@ const calculateTrip = () => {
   console.log(currentTrip)
 }
 
+const updatePendingTrips = () => {
+  onStartup();
+}
+
 const postTrip = () => {
   apiFetch.postData('http://localhost:3001/api/v1/trips', currentTrip)
     .then(res => {
       console.log(res);
       domUpdates.hideConfirmScreen();
+      domUpdates.revealCalculateButton();
       updatePendingTrips();
     });
 
