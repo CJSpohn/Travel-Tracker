@@ -1,7 +1,224 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
-
 body {
-  background: $primary-background;
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+ font-weight: 700;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+.vertical-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+
+// -------------------LAYOUT-------------------
+.user-wrapper {
+  display: grid;
+  height: 180vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.8fr 2fr 2fr;
+  grid-template-areas:
+    "heading heading heading heading"
+    "user-pending-trips user-main-form user-main-form user-main-form"
+    "user-past-trips user-main-form user-main-form user-main-form";
+    grid-gap: 0.2rem;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 1rem;
+  background: url('../images/beach.jpg');
+  background-size: 100% 150%;
+  grid-area: heading;
+}
+
+.main-display {
+  grid-area: user-main-form;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.past-trips {
+  grid-area: user-past-trips;
+  padding: 10px;
+}
+
+.pending-trips {
+  grid-area: user-pending-trips;
+  padding: 10px;
+}
+
+// -------------------STYLING-------------------
+.logo-wrapper {
+  text-align: center;
+  height: 30%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 2%;
+  background: white;
+}
+
+.welcome {
+  margin-top: 7vh;
+  font-size: 3rem;
+}
+
+.log-out {
+  margin-top: 2%;
+  height: 30%;
+}
+
+.pending-trips__header,
+.past-trips__header {
+  text-align: center;
+}
+
+.main-display__header {
+  margin-top: 4%;
+  font-size: 2rem;
+}
+
+// ------------------FORM-----------------
+.form__background {
+  height: 80%;
+  width: 80%;
+  border-radius: 50px;
+  background-image: url('../images/window-seat.jpg');
+  background-position: 50% 50%;
+  background-size: 200% 200%;
+}
+
+.form__wrapper {
+  @extend .vertical-wrapper;
+  margin: auto;
+  margin-top: 8%;
+  border-radius: 50px;
+  height: 70%;
+  width: 50%;
+  padding: 5%;
+}
+
+.form__input-wrapper {
+  @extend .vertical-wrapper;
+  align-items: center;
+  margin: 2%;
+}
+
+.input__cost-display {
+  font-size: 2em;
+  color: green;
+}
+
+.form__button {
+  margin-top: 2%;
+  width: 40%;
+}
+
+.form__confirm-buttons-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form {
+  height: 100%;
+  width: 70%;
+  text-align: center;
+}
+
+fieldset {
+  @extend .vertical-wrapper;
+  text-align: center;
+  border-radius: 10px;
+  margin: 2%;
+}
+
+.input__cost-wrapper {
+  height: 30%;
+  margin-top: 15%;
+}
+
+.form__confirmation {
+  font-size: 1.5rem;
+  margin-top: 5%;
+}
+
+.hidden {
+  display: none;
+}
+
+// ----------------------PAST TRIPS-------------------
+.past-trips__wrapper {
+  display: flex;
+}
+
+.past-trips__trip {
+  margin: 10px;
+}
+
+.past-trips__image {
+  width: 200px;
+}
+
+
+// -------------------MEDIA QUERIES-------------------
+
+@media (max-width: 1000px) {
+  .user-wrapper {
+    height: 200vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.5fr 6fr 1.5fr;
+    grid-template-areas:
+    "heading"
+    "user-pending-trips"
+    "user-main-form"
+    "user-past-trips";
+  }
+}
+
+@media (max-width: 800px) {
+  .form__wrapper {
+    width: 80%;
+  }
+}
+
+@media (max-width: 560px) {
+  .heading {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .welcome {
+    margin: 0;
+  }
+
+  .user-wrapper {
+    height: 200vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.5fr 6fr 1.5fr;
+    grid-template-areas:
+    "heading"
+    "user-pending-trips"
+    "user-main-form"
+    "user-past-trips";
+  }
 }

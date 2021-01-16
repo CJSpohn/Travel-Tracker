@@ -1,12 +1,91 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Travel Tracker</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
+    <div class="login-wrapper hidden"></div>
+    <div class="user-wrapper">
+      <header id="heading" class="heading heading--user">
+        <div class="logo-wrapper">
+          <h1 class="logo">Travel Tracker</h1>
+          <p class="sub-logo">We are where you're going</p>
+        </div>
+        <h1 class="welcome">Welcome, User</h1>
+        <button class="log-out">Log Out</button>
+      </header>
+      <section id="user-pending-trips" class="pending-trips">
+        <h2>Pending Trips</h2>
+        <section class="pending-trips__wrapper">
+          <h3 class="pending-trips__header">You have no pending trips.</h3>
+          <template class="pending-trip">
+              <hr>
+              <p>To: <span class="pending-trip__destination"> Aruba</span></p>
+              <p>Leaving on: <span class="pending-trip__date">Jan 20th</span></p>
+              <p>Travelers: <span class="pending-trip__date">4</span></p>
+              <p>Days: <span class="pending-trip__date">8</span></p>
+          </template>
+        </section>
+      </section>
+      <section id="user-main-form" class="main-display">
+        <section class="form__background">
+          <section class="form__wrapper">
+            <form class="form">
+              <h3 class="form__title">Book Your Next Trip</h3>
+              <fieldset>
+                <div class="form__input-wrapper">
+                  <label for="destination">Choose your destination</label>
+                  <select name="destination" id="destination">
+                    <option value="aruba">Aruba</option>
+                    <option value="paris">Paris</option>
+                    <option value="Cabo">Cabo</option>
+                  </select>
+                </div>
+                <div class="form__input-wrapper">
+                  <label for="date">Start Date</label>
+                  <input type="date" id="start-date" name="start-date">
+                </div>
+                <div class="form__input-wrapper">
+                  <label for="travelers">Number of Travelers</label>
+                  <input type="text" id="travelers" name="travelers">
+                </div>
+                <div class="form__input-wrapper">
+                  <label for="duration">How many days would you like to stay?</label>
+                  <input id="duration" name="duration" type="text">
+                </div>
+              </fieldset>
+              <button class="form__button input__cost-button">Caclulate Cost</button>
+              <div class="form__cost-wrapper hidden">
+                <p>Your trip will cost</p>
+                <p class="input__cost-display">840 dollars</p>
+                <p>Would you like to confirm this trip?</p>
+                <div class="form__confirm-buttons-wrapper">
+                  <button class="form__button input__confirm-button">Confirm Trip</button>
+                  <button class="form__button input__clear-button">Clear Trip</button>
+                </div>
+                <p class="form__confirmation hidden">Congratulations! Your trip has been confirmed!</p>
+              </div>
+            </form>
+          </section>
+        </section>
+      </section>
+      <footer id="user-past-trips" class="past-trips">
+        <h2>Past Destinations</h2>
+        <h3 class="past-trips__header">You have no past trips!</h3>
+        <section class="past-trips__wrapper">
+          <template class="past-trips__trip">
+            <img class="past-trips__image" src="https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80" alt="A beautiful picture of Cabo">
+            <h3>Cabo!</h3>
+            <p>On <span class="past-trips__date">July 8th, 2019</span></p>
+          </template>
+        </section>
+      </footer>
+    </div>
+    <div class="agent-wrapper hidden"></div>
 
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+
+
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
