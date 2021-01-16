@@ -15,7 +15,7 @@ const sortUserTrips = (trips) => {
   trips.forEach(trip => {
     domUpdates.hidePastHeader();
     const tripDate = new Date(trip.date);
-    if (tripDate > currentDate || trip.status === 'pending') { 
+    if (tripDate > currentDate || trip.status === 'pending') {
       domUpdates.hidePendingHeader();
       domUpdates.addPendingTrip(trip, destinations)
     } else {
@@ -32,7 +32,7 @@ const onStartup = () => {
 
   Promise.all([usersPromise, tripsPromise, destinationsPromise])
     .then(promises => {
-      currentUser = new User(promises[0].travelers[35]);
+      currentUser = new User(promises[0].travelers[7]);
       trips = promises[1].trips;
       destinations = promises[2].destinations;
       domUpdates.greetUser(currentUser);
