@@ -8,8 +8,9 @@ import User from './User';
 
 const signOutButton = document.querySelector('.log-out');
 const costButton = document.querySelector('.input__cost-button');
+const confirmTripButton = document.querySelector('.input__confirm-button');
 
-let currentUser, trips, destinations;
+let currentUser, trips, destinations, currentTrip;
 
 const sortUserTrips = (trips) => {
   const currentDate = Date.now();
@@ -33,7 +34,7 @@ const onStartup = () => {
 
   Promise.all([usersPromise, tripsPromise, destinationsPromise])
     .then(promises => {
-      currentUser = new User(promises[0].travelers[7]);
+      currentUser = new User(promises[0].travelers[13]);
       trips = promises[1].trips;
       destinations = promises[2].destinations;
       domUpdates.greetUser(currentUser);
@@ -52,17 +53,30 @@ const calculateTrip = () => {
   const destinationId = destinations.find(destination => destination.destination === destinationName).id;
   const tripDetails = {
     id: id,
+    userID: currentUser.id,
     destinationID: destinationId,
     travelers: travelers,
-    duration: duration,
     date: startDate,
+    duration: duration,
   }
-  const currentTrip = new Trip(currentUser, tripDetails);
+  currentTrip = new Trip(tripDetails);
   const tripCost = currentTrip.calculateCost(destinations);
   domUpdates.revealCostDisplay(tripCost);
+  console.log(currentTrip)
+}
+
+const postTrip = () => {
+  apiFetch.postData('http://localhost:3001/api/v1/trips', currentTrip)
+    .then(res => {
+      console.log(res);
+      domUpdates.hideConfirmScreen();
+      updatePendingTrips();
+    });
+
 }
 
 
 window.onload = onStartup();
 costButton.addEventListener('click', calculateTrip)
+confirmTripButton.addEventListener('click', postTrip)
 // signOutButton.addEventListener('click', log)
