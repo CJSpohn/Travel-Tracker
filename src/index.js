@@ -11,13 +11,16 @@ const signOutButton = document.querySelector('.log-out');
 let currentUser, trips, destinations;
 
 const sortUserTrips = (trips) => {
+  const currentDate = Date.now();
   trips.forEach(trip => {
-    if (trip.status === 'pending') {
+    domUpdates.hidePastHeader();
+    const tripDate = new Date(trip.date);
+    if (tripDate > currentDate || trip.status === 'pending') { 
       domUpdates.hidePendingHeader();
       domUpdates.addPendingTrip(trip, destinations)
     } else {
       domUpdates.hidePastHeader();
-      domUpdates.addPastTrip(trip, destinations)
+      domUpdates.addPastTrip(trip, destinations);
     }
   })
 }
@@ -29,7 +32,7 @@ const onStartup = () => {
 
   Promise.all([usersPromise, tripsPromise, destinationsPromise])
     .then(promises => {
-      currentUser = new User(promises[0].travelers[6]);
+      currentUser = new User(promises[0].travelers[35]);
       trips = promises[1].trips;
       destinations = promises[2].destinations;
       domUpdates.greetUser(currentUser);
