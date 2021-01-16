@@ -24,6 +24,7 @@ class Trip {
       digits.splice(digits.length - 3, 0, ',')
       return digits.join('')
     }
+    return digits.join('')
   }
 
 }

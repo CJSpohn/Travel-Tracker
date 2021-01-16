@@ -15,7 +15,6 @@ let currentUser, trips, destinations, currentTrip;
 const sortUserTrips = (trips) => {
   const currentDate = Date.now();
   trips.forEach(trip => {
-    domUpdates.hidePastHeader();
     const tripDate = new Date(trip.date);
     if (tripDate > currentDate || trip.status === 'pending') {
       domUpdates.hidePendingHeader();
@@ -66,7 +65,7 @@ const calculateTrip = () => {
 }
 
 const updatePendingTrips = () => {
-  onStartup();
+  domUpdates.addPendingTrip(currentTrip, destinations)
 }
 
 const postTrip = () => {
