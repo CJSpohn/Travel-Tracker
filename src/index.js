@@ -8,12 +8,13 @@ import User from './User';
 
 const signOutButton = document.querySelector('.log-out');
 
-let currentUser, trips;
+let currentUser, trips, destinations;
 
 const sortUserTrips = (trips) => {
   trips.forEach(trip => {
     if (trip.status === 'pending') {
-      domUpdates.addPendingTrip(trip)
+      domUpdates.hideHeader();
+      domUpdates.addPendingTrip(trip, destinations)
     }
   })
 }
@@ -21,11 +22,13 @@ const sortUserTrips = (trips) => {
 const onStartup = () => {
   const usersPromise = apiFetch.getData('http://localhost:3001/api/v1/travelers');
   const tripsPromise = apiFetch.getData('http://localhost:3001/api/v1/trips');
+  const destinationsPromise = apiFetch.getData('http://localhost:3001/api/v1/destinations');
 
-  Promise.all([usersPromise, tripsPromise])
+  Promise.all([usersPromise, tripsPromise, destinationsPromise])
     .then(promises => {
-      currentUser = new User(promises[0].travelers[9]);
+      currentUser = new User(promises[0].travelers[6]);
       trips = promises[1].trips;
+      destinations = promises[2].destinations;
       domUpdates.greetUser(currentUser);
       sortUserTrips(currentUser.findUserTrips(trips));
     })
