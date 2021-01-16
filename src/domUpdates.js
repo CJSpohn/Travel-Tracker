@@ -1,6 +1,6 @@
 let domUpdates = {
   greetUser(user) {
-    console.log(user.name)
+    document.querySelector('.js-welcome').innerText += ' ' + user.name.split(' ')[0]
   }
 }
 
