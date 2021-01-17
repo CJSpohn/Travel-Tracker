@@ -15,7 +15,8 @@ class Trip {
     const destination = destinations.find(destination => destination.id === this.destinationID);
     totalSpent += destination.estimatedFlightCostPerPerson * this.travelers;
     totalSpent += destination.estimatedLodgingCostPerDay * this.duration;
-    return this.commafy(totalSpent)
+    totalSpent *= 1.1;
+    return this.commafy(Math.floor(totalSpent))
   }
 
   commafy(cost) {
