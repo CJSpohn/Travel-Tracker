@@ -68,6 +68,7 @@ let domUpdates = {
     this.hideCalculateButton();
     this.revealConfirmScreen();
     this.updateCost(cost)
+
   },
 
   clearTripForm() {
@@ -77,6 +78,14 @@ let domUpdates = {
     document.querySelector('.duration').value = '';
     this.hideConfirmScreen();
     this.revealCalculateButton();
+  },
+
+  revealFormError() {
+    document.querySelector('.form__error').classList.remove('hidden');
+  },
+
+  hideFormError() {
+    document.querySelector('.form__error').classList.add('hidden');
   },
 
   revealConfirmScreen() {

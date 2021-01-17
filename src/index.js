@@ -44,12 +44,32 @@ const onStartup = () => {
     domUpdates.setStartDate();
 }
 
+const verifyInputs = (stringInputs, numberInputs) => {
+  let inputsCorrect = true;
+  stringInputs.forEach(input => {
+    if (input === '') {
+      inputsCorrect = false;
+    }
+  });
+  numberInputs.forEach(input => {
+    if (!parseInt(input)) {
+      inputsCorrect = false;
+    }
+  });
+  return inputsCorrect;
+}
+
 const calculateTrip = () => {
   const destinationName = document.querySelector('.form__list').value;
   const startDate = document.querySelector('.start-date').value.replaceAll('-', '/');
   const travelers = document.querySelector('.travelers').value;
   const duration = document.querySelector('.duration').value;
   const id = trips.length + 1;
+  const verifiedInputs = verifyInputs( [ startDate ], [ travelers, duration ] );
+  if (!verifiedInputs) {
+    domUpdates.revealFormError();
+    return;
+  }
   const destinationId = destinations.find(destination => destination.destination === destinationName).id;
   const tripDetails = {
     id: id,
@@ -61,6 +81,7 @@ const calculateTrip = () => {
   }
   currentTrip = new Trip(tripDetails);
   const tripCost = currentTrip.calculateCost(destinations);
+  domUpdates.hideFormError();
   domUpdates.revealCostDisplay(tripCost);
   console.log(currentTrip)
 }
