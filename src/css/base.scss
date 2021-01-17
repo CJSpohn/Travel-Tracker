@@ -45,8 +45,7 @@ p {
   align-items: flex-start;
   justify-content: space-between;
   padding: 0 1rem;
-  background: url('../images/beach.jpg');
-  background-size: 100% 120%;
+  background-color: darken(cornflowerblue, 10%);
   grid-area: heading;
 }
 
@@ -241,18 +240,11 @@ fieldset {
     "user-past-trips";
   }
 
-  .sub-logo {
-    display: none;
-  }
 }
 
 @media (max-width: 800px) {
   .form__wrapper {
     width: 70%;
-  }
-
-  .sub-logo {
-    display: none;
   }
 
   .welcome {
