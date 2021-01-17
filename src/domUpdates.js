@@ -43,6 +43,15 @@ let domUpdates = {
     })
   },
 
+  populateExpenditures(user, destinations) {
+    const expenses = user.getTripCostsForCalendarYear(destinations);
+    document.querySelector('.trips-taken').innerText += expenses.tripsTaken;
+    document.querySelector('.trips-cost').innerText += expenses.tripCosts;
+    document.querySelector('.trips-fees').innerText += expenses.agentFees;
+    document.querySelector('.trips-total').innerText += expenses.totalSpent;
+
+  },
+
   setStartDate() {
     const calendar = document.querySelector('.start-date')
     let today = new Date();
@@ -68,7 +77,6 @@ let domUpdates = {
     this.hideCalculateButton();
     this.revealConfirmScreen();
     this.updateCost(cost)
-
   },
 
   clearTripForm() {
