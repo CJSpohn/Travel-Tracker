@@ -10,10 +10,13 @@ let domUpdates = {
     const date = template.querySelector('.pending-trip__date');
     const travelers = template.querySelector('.pending-trip__travelers');
     const duration = template.querySelector('.pending-trip__duration');
+    const status = template.querySelector('.pending-trip__status');
     destination.textContent = tripDestination.destination;
     date.textContent = trip.date;
     travelers.textContent = trip.travelers;
     duration.textContent = trip.duration;
+    status.textContent = trip.status;
+    trip.status === 'pending' ? status.classList.add('pending') : status.classList.add('approved');
     document.querySelector('.pending-trips__wrapper').appendChild(
       document.importNode(template, true));
   },
@@ -47,10 +50,10 @@ let domUpdates = {
     let mm = today.getMonth()+1;
     const yyyy = today.getFullYear();
     if (dd < 10) {
-      dd='0'+dd
+      dd = '0' + dd
     }
-    if(mm < 10 ) {
-      mm='0'+mm
+    if (mm < 10) {
+      mm = '0' + mm
     }
     today = yyyy + '-' + mm + '-' + dd;
     calendar.setAttribute("min", today);

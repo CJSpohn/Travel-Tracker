@@ -175,6 +175,18 @@ fieldset {
 .hidden {
   display: none;
 }
+// ----------------------PENDING TRIPS-------------------
+.pending-trip__status {
+  font-weight: 700;  
+}
+
+.pending {
+  color: red;
+}
+
+.approved {
+  color: green;
+}
 
 // ----------------------PAST TRIPS-------------------
 .past-trips__wrapper {
@@ -197,6 +209,7 @@ fieldset {
   flex-direction: column;
   margin: 10px;
 }
+
 
 
 // -------------------MEDIA QUERIES-------------------
