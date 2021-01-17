@@ -215,6 +215,14 @@ fieldset {
   margin: 10px;
 }
 
+.past-trips__expenditures {
+  margin-left: 25%;
+  width: 50vw;
+}
+
+.past-trips__expenditures-text {
+  font-size: 1.5rem;
+}
 
 
 // -------------------MEDIA QUERIES-------------------
@@ -254,6 +262,12 @@ fieldset {
   .heading {
     flex-direction: column;
     align-items: center;
+  }
+
+  .past-trips {
+    grid-area: user-past-trips;
+    padding: 10px;
+    max-width: 90vw;
   }
 
   .welcome {
