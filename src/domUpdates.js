@@ -10,10 +10,19 @@ let domUpdates = {
     const date = template.querySelector('.pending-trip__date');
     const travelers = template.querySelector('.pending-trip__travelers');
     const duration = template.querySelector('.pending-trip__duration');
+    const status = template.querySelector('.pending-trip__status');
     destination.textContent = tripDestination.destination;
     date.textContent = trip.date;
     travelers.textContent = trip.travelers;
     duration.textContent = trip.duration;
+    status.textContent = trip.status;
+    if (trip.status === 'pending') {
+      status.classList.add('pending');
+      status.classList.remove('approved');
+    } else {
+      status.classList.add('approved');
+      status.classList.remove('pending');
+    }
     document.querySelector('.pending-trips__wrapper').appendChild(
       document.importNode(template, true));
   },
@@ -40,6 +49,14 @@ let domUpdates = {
     })
   },
 
+  populateExpenditures(user, destinations) {
+    const expenses = user.getTripCostsForCalendarYear(destinations);
+    document.querySelector('.trips-taken').innerText += ` ${expenses.tripsTaken}`;
+    document.querySelector('.trips-cost').innerText += expenses.tripCosts;
+    document.querySelector('.trips-fees').innerText += expenses.agentFees;
+    document.querySelector('.trips-total').innerText += expenses.totalSpent;
+  },
+
   setStartDate() {
     const calendar = document.querySelector('.start-date')
     let today = new Date();
@@ -47,10 +64,10 @@ let domUpdates = {
     let mm = today.getMonth()+1;
     const yyyy = today.getFullYear();
     if (dd < 10) {
-      dd='0'+dd
+      dd = '0' + dd
     }
-    if(mm < 10 ) {
-      mm='0'+mm
+    if (mm < 10) {
+      mm = '0' + mm
     }
     today = yyyy + '-' + mm + '-' + dd;
     calendar.setAttribute("min", today);
@@ -65,6 +82,23 @@ let domUpdates = {
     this.hideCalculateButton();
     this.revealConfirmScreen();
     this.updateCost(cost)
+  },
+
+  clearTripForm() {
+    document.querySelector('.form__list').value = ''
+    document.querySelector('.start-date').value = '';
+    document.querySelector('.travelers').value = '';
+    document.querySelector('.duration').value = '';
+    this.hideConfirmScreen();
+    this.revealCalculateButton();
+  },
+
+  revealFormError() {
+    document.querySelector('.form__error').classList.remove('hidden');
+  },
+
+  hideFormError() {
+    document.querySelector('.form__error').classList.add('hidden');
   },
 
   revealConfirmScreen() {

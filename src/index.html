@@ -10,7 +10,6 @@
       <header id="heading" class="heading heading--user">
         <div class="logo-wrapper">
           <h1 class="logo">Travel Tracker</h1>
-          <p class="sub-logo">We are where you're going</p>
         </div>
         <h1 class="welcome js-welcome">Welcome,</h1>
         <button class="log-out">Log Out</button>
@@ -20,16 +19,19 @@
         <section class="pending-trips__wrapper">
           <h3 class="pending-trips__header">You have no pending trips.</h3>
           <template class="pending-trips__trip">
-              <hr>
+            <hr>
+            <div class="pending-trips__trip-wrapper">
               <p>To: <span class="pending-trip__destination"></span></p>
               <p>Leaving on: <span class="pending-trip__date"></span></p>
               <p>Travelers: <span class="pending-trip__travelers"></span></p>
               <p>Days: <span class="pending-trip__duration"></span></p>
+              <p>Status: <span class="pending-trip__status"></span></p>
+            </div>
           </template>
         </section>
       </section>
       <section id="user-main-form" class="main-display">
-        <section class="form__background">
+        <div class="form__background">
           <section class="form__wrapper">
             <form class="form">
               <h3 class="form__title">Book Your Next Trip</h3>
@@ -52,6 +54,7 @@
                   <input class="duration" name="duration" type="text">
                 </div>
               </fieldset>
+              <p class="form__error hidden">Please enter a date and travelers/duration as numbers.</p>
               <button class="form__button input__cost-button" type="button">Caclulate Cost</button>
               <div class="form__cost-wrapper hidden">
                 <p>Your trip will cost</p>
@@ -65,10 +68,11 @@
               </div>
             </form>
           </section>
-        </section>
+        </div>
       </section>
       <footer id="user-past-trips" class="past-trips">
         <h2>Past Destinations</h2>
+        <hr>
         <h3 class="past-trips__header">You have no past trips!</h3>
         <section class="past-trips__wrapper">
           <template class="past-trips__trip">
@@ -78,6 +82,14 @@
               <p>On <span class="past-trips__date"></span></p>
             </div>
           </template>
+        </section>
+        <section class="past-trips__expenditures">
+          <h2>Expense Report: (calendar year)</h2>
+          <hr>
+          <p class="past-trips__expenditures-text trips-taken">Trips taken:</p>
+          <p class="past-trips__expenditures-text trips-cost">Trip costs: $</p>
+          <p class="past-trips__expenditures-text trips-fees">Agent fees: $</p>
+          <p class="past-trips__expenditures-text trips-total">Total Spent: $</p>
         </section>
       </footer>
     </div>
