@@ -9,6 +9,7 @@ import User from './User';
 const signOutButton = document.querySelector('.log-out');
 const costButton = document.querySelector('.input__cost-button');
 const confirmTripButton = document.querySelector('.input__confirm-button');
+const clearTripButton = document.querySelector('.input__clear-button');
 
 let currentUser, trips, destinations, currentTrip;
 
@@ -16,7 +17,7 @@ const sortUserTrips = (trips) => {
   const currentDate = Date.now();
   trips.forEach(trip => {
     const tripDate = new Date(trip.date);
-    if (tripDate > currentDate || trip.status === 'pending') {
+    if (tripDate.getTime() > currentDate || trip.status === 'pending') {
       domUpdates.hidePendingHeader();
       domUpdates.addPendingTrip(trip, destinations)
     } else {
@@ -33,7 +34,7 @@ const onStartup = () => {
 
   Promise.all([usersPromise, tripsPromise, destinationsPromise])
     .then(promises => {
-      currentUser = new User(promises[0].travelers[10]);
+      currentUser = new User(promises[0].travelers[24]);
       trips = promises[1].trips;
       destinations = promises[2].destinations;
       domUpdates.greetUser(currentUser);
@@ -76,11 +77,15 @@ const postTrip = () => {
       domUpdates.revealCalculateButton();
       updatePendingTrips();
     });
+}
 
+const clearTrip = () => {
+  domUpdates.clearTripForm();
 }
 
 
 window.onload = onStartup();
-costButton.addEventListener('click', calculateTrip)
-confirmTripButton.addEventListener('click', postTrip)
+costButton.addEventListener('click', calculateTrip);
+confirmTripButton.addEventListener('click', postTrip);
+clearTripButton.addEventListener('click', clearTrip)
 // signOutButton.addEventListener('click', log)

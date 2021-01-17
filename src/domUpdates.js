@@ -70,6 +70,15 @@ let domUpdates = {
     this.updateCost(cost)
   },
 
+  clearTripForm() {
+    document.querySelector('.form__list').value = ''
+    document.querySelector('.start-date').value = '';
+    document.querySelector('.travelers').value = '';
+    document.querySelector('.duration').value = '';
+    this.hideConfirmScreen();
+    this.revealCalculateButton();
+  },
+
   revealConfirmScreen() {
     document.querySelector('.form__cost-wrapper').classList.remove('hidden');
   },
