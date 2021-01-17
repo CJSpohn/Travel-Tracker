@@ -67,6 +67,7 @@ p {
 .pending-trips {
   grid-area: user-pending-trips;
   padding: 10px;
+  overflow-y: scroll;
 }
 
 // -------------------STYLING-------------------
@@ -183,6 +184,7 @@ fieldset {
 .pending-trip__status {
   font-weight: 700;
 }
+
 
 .pending {
   color: red;

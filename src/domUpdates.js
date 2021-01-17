@@ -16,7 +16,13 @@ let domUpdates = {
     travelers.textContent = trip.travelers;
     duration.textContent = trip.duration;
     status.textContent = trip.status;
-    trip.status === 'pending' ? status.classList.add('pending') : status.classList.add('approved');
+    if (trip.status === 'pending') {
+      status.classList.add('pending');
+      status.classList.remove('approved');
+    } else {
+      status.classList.add('approved');
+      status.classList.remove('pending');
+    }
     document.querySelector('.pending-trips__wrapper').appendChild(
       document.importNode(template, true));
   },
@@ -45,11 +51,10 @@ let domUpdates = {
 
   populateExpenditures(user, destinations) {
     const expenses = user.getTripCostsForCalendarYear(destinations);
-    document.querySelector('.trips-taken').innerText += expenses.tripsTaken;
+    document.querySelector('.trips-taken').innerText += ` ${expenses.tripsTaken}`;
     document.querySelector('.trips-cost').innerText += expenses.tripCosts;
     document.querySelector('.trips-fees').innerText += expenses.agentFees;
     document.querySelector('.trips-total').innerText += expenses.totalSpent;
-
   },
 
   setStartDate() {

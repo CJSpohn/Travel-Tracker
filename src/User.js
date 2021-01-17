@@ -31,8 +31,7 @@ class User {
     }
 
     this.trips.forEach(trip => {
-      if (trip.date.includes(currentYear)) {
-        console.log(trip)
+      if (trip.date.includes(currentYear) && trip.status === 'approved') {
         let tripCost = this.calculateTotalSpent(destinations, [trip])
         calendarYearTripInfo.tripsTaken++;
         calendarYearTripInfo.tripCosts += tripCost;
