@@ -47,7 +47,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: cornflowerblue;
+  background-color: lighten(cornflowerblue, 20%);
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;

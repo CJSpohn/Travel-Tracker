@@ -36,6 +36,7 @@ let domUpdates = {
     destination.textContent = tripDestination.destination;
     date.textContent = trip.date;
     image.src = tripDestination.image;
+    image.alt = tripDestination.alt;
     document.querySelector('.past-trips__wrapper').appendChild(
       document.importNode(template, true));
   },
