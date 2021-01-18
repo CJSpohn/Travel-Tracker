@@ -34,7 +34,7 @@ const onStartup = () => {
 
   Promise.all([usersPromise, tripsPromise, destinationsPromise])
     .then(promises => {
-      currentUser = new User(promises[0].travelers[13]);
+      currentUser = new User(promises[0].travelers[15]);
       trips = promises[1].trips;
       destinations = promises[2].destinations;
       domUpdates.greetUser(currentUser);
