@@ -98,35 +98,42 @@ const calculateTrip = () => {
     travelers: travelers,
     date: startDate,
     duration: duration,
-  }
+  };
   currentTrip = new Trip(tripDetails);
   const tripCost = currentTrip.calculateCost(destinations);
   domUpdates.hideFormError();
   domUpdates.revealCostDisplay(tripCost);
-  console.log(currentTrip)
+  console.log(currentTrip);
 }
 
-const updatePendingTrips = () => {
+const updateTrips = () => {
   domUpdates.addPendingTrip(currentTrip, destinations)
+  apiFetch.getData('http://localhost:3001/api/v1/trips')
+    .then(res => trips = res.trips);
 }
 
 const postTrip = () => {
   apiFetch.postData('http://localhost:3001/api/v1/trips', currentTrip)
-    .then(res => {
-      console.log('res', res);
-      domUpdates.hideConfirmScreen();
-      domUpdates.revealCalculateButton();
-      updatePendingTrips();
-    });
-}
-
-const clearTrip = () => {
-  domUpdates.clearTripForm();
+  .then(res => {
+    domUpdates.hideConfirmScreen();
+    domUpdates.revealCalculateButton();
+    domUpdates.displayPostSuccess();
+    domUpdates.clearTripForm();
+    updateTrips();
+  })
+  .catch(err => {
+    console.log(err);
+    domUpdates.displayPostError();
+  });
 }
 
 costButton.addEventListener('click', calculateTrip);
 confirmTripButton.addEventListener('click', postTrip);
-clearTripButton.addEventListener('click', clearTrip)
+clearTripButton.addEventListener('click', () => {
+  domUpdates.clearTripForm();
+})
 signInButton.addEventListener('click', domUpdates.showSignIn);
-enterSiteButton.addEventListener('click', verifyCredentials)
-signOutButton.addEventListener('click', domUpdates.logOut)
+enterSiteButton.addEventListener('click', verifyCredentials);
+signOutButton.addEventListener('click', () => {
+  location.reload();
+})

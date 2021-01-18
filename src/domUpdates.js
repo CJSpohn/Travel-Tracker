@@ -26,6 +26,7 @@ let domUpdates = {
   },
 
   addPendingTrip(trip, destinations) {
+    this.hidePendingHeader();
     let tripDestination = destinations.find(destination => destination.id === trip.destinationID);
     const template = document.querySelector('.pending-trips__trip').content;
     const destination = template.querySelector('.pending-trip__destination');
@@ -124,6 +125,20 @@ let domUpdates = {
     this.revealCalculateButton();
   },
 
+  displayPostError() {
+    document.querySelector('.main-error-text').classList.remove('hidden');
+    setTimeout(() => {
+      document.querySelector('.main-error-text').classList.add('hidden');
+    }, 5000);
+  },
+
+  displayPostSuccess() {
+    document.querySelector('.main-success-text').classList.remove('hidden');
+    setTimeout(() => {
+      document.querySelector('.main-success-text').classList.add('hidden');
+    }, 5000);
+  },
+
   revealFormError() {
     document.querySelector('.form__error').classList.remove('hidden');
   },
@@ -154,7 +169,7 @@ let domUpdates = {
 
   hidePastHeader() {
     document.querySelector('.past-trips__header').classList.add('hidden')
-  }
+  },
 
 }
 
