@@ -5,14 +5,22 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
   </head>
   <body>
-    <div class="login-wrapper hidden">
-      <div class="heading__element-wrapper">
-        <h1 class="title">Travel<span class="logo-span">Tracker</span></h1>
+    <div class="login__wrapper">
+      <div class="login__element-wrapper">
+        <h1 class="login__title">Travel<span class="logo-span">Tracker</span></h1>
         <p class="sub-title">Traveling is stressful. Planning for it doesn't have to be.</p>
-        <button class="heading__button log-in">Sign In</button>
+        <button class="heading__button login__button">Sign In</button>
       </div>
+      <section class="login__form">
+        <h1 class="login__title">Travel<span class="logo-span">Tracker</span></h1>
+        <label class="login__label" for="username">Username:</label>
+        <input class="login__input" id="username" type="text">
+        <label class="login__label" for="password">Password:</label>
+        <input class="login__input" id="password" type="password">
+        <button class="heading__button login__button">Sign In</button>
+      </section>
     </div>
-    <div class="user-wrapper">
+    <div class="user-wrapper hidden">
       <header id="heading" class="heading heading--user">
         <h1 class="title">Travel<span class="logo-span">Tracker</span></h1>
         <button class="heading__button log-out">Log Out</button>
