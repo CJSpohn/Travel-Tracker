@@ -47,7 +47,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: cornflowerblue;
+  background-color: lighten(cornflowerblue, 20%);
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -303,7 +303,7 @@ fieldset {
   .user-wrapper {
     height: 200vh;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1.5fr 6fr 1.5fr;
+    grid-template-rows: 1.2fr 1.5fr 6fr 1.5fr;
     grid-template-areas:
     "heading"
     "user-pending-trips"
@@ -316,6 +316,11 @@ fieldset {
   }
 
   .log-out {
+    margin-right: 0;
     margin-bottom: 5px;
+  }
+
+  .title {
+    margin-right: 0;
   }
 }
