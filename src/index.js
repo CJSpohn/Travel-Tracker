@@ -19,9 +19,10 @@ const sortUserTrips = (trips) => {
   const currentDate = Date.now();
   trips.forEach(trip => {
     const tripDate = new Date(trip.date);
-    if (tripDate.getTime() > currentDate || trip.status === 'pending') {
+    if (trip.status === 'pending') {
       domUpdates.hidePendingHeader();
-      domUpdates.addPendingTrip(trip, destinations)
+      let expired = tripDate.getTime() < currentDate;
+      domUpdates.addPendingTrip(trip, destinations, expired)
     } else {
       domUpdates.hidePastHeader();
       domUpdates.addPastTrip(trip, destinations);
@@ -84,7 +85,7 @@ const calculateTrip = () => {
   const startDate = document.querySelector('.start-date').value.replaceAll('-', '/');
   const travelers = document.querySelector('.travelers').value;
   const duration = document.querySelector('.duration').value;
-  const id = trips.length + 1;
+  const id = trips[trips.length-1].id + 1;
   const verifiedInputs = verifyInputs( [ startDate ], [ travelers, duration ] );
   if (!verifiedInputs) {
     domUpdates.revealFormError();
