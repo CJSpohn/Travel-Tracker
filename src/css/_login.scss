@@ -28,12 +28,13 @@
 .login__form {
   @extend .vertical-wrapper;
   position: absolute;
-  left: 25vw;
+  left: 12.5vw;
   top: 25vh;
-  width: 50%;
+  width: 75%;
   height: 55%;
   font-size: 2rem;
   border-radius: 50px;
+  padding: 5px;
   background-color: lightgrey;
 }
 
