@@ -30,13 +30,13 @@ const sortUserTrips = (trips) => {
 }
 
 const onStartup = (userId) => {
-  const usersPromise = apiFetch.getData('http://localhost:3001/api/v1/travelers');
+  const usersPromise = apiFetch.getData(`http://localhost:3001/api/v1/travelers/${userId}`);
   const tripsPromise = apiFetch.getData('http://localhost:3001/api/v1/trips');
   const destinationsPromise = apiFetch.getData('http://localhost:3001/api/v1/destinations');
 
   Promise.all([usersPromise, tripsPromise, destinationsPromise])
     .then(promises => {
-      currentUser = new User(promises[0].travelers[userId - 1]);
+      currentUser = new User(promises[0]);
       trips = promises[1].trips;
       destinations = promises[2].destinations;
       domUpdates.greetUser(currentUser);
