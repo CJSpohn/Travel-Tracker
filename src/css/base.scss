@@ -1,7 +1,10 @@
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Quicksand', sans-serif;
   font-weight: 300;
 }
 
@@ -31,7 +34,7 @@ p {
   display: grid;
   height: 180vh;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.8fr 2fr 2fr 1fr;
+  grid-template-rows: 0.4fr 2fr 2fr 1fr;
   grid-template-areas:
     "heading heading heading heading"
     "user-pending-trips user-main-form user-main-form user-main-form"
@@ -42,10 +45,12 @@ p {
 
 .heading {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
-  background-color: darken(white, 10%);
+  background-color: cornflowerblue;
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
   grid-area: heading;
   border-bottom: 2px solid grey;
 }
@@ -71,14 +76,6 @@ p {
 }
 
 // -------------------STYLING-------------------
-.logo-wrapper {
-  text-align: center;
-  height: 30%;
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 2%;
-  background: darken(cornflowerblue, 10%);
-}
 
 .welcome {
   margin-top: 7vh;
@@ -86,12 +83,42 @@ p {
 }
 
 .log-out {
-  margin-top: 2%;
-  height: 20%;
-  background: lightgrey;
+  margin-right: 5%;
+}
+
+.heading__element-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+}
+
+.heading__button {
+  width: 150px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: 1.4rem;
+  background: darken(aqua, 15%);
   &:hover {
-    background: grey;
+    background: darken(aqua, 30%);
   }
+}
+
+.title {
+  margin-left: 5%;
+  font-size: 3rem;
+}
+
+.sub-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.log-in {
+  margin: 5% 0 0 30%;
+}
+
+.logo-span {
+  color: darken(aqua, 30%);
 }
 
 .pending-trips__header,

@@ -5,14 +5,17 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
   </head>
   <body>
-    <div class="login-wrapper hidden"></div>
+    <div class="login-wrapper hidden">
+      <div class="heading__element-wrapper">
+        <h1 class="title">Travel<span class="logo-span">Tracker</span></h1>
+        <p class="sub-title">Traveling is stressful. Planning for it doesn't have to be.</p>
+        <button class="heading__button log-in">Sign In</button>
+      </div>
+    </div>
     <div class="user-wrapper">
       <header id="heading" class="heading heading--user">
-        <div class="logo-wrapper">
-          <h1 class="logo">Travel Tracker</h1>
-        </div>
-        <h1 class="welcome js-welcome">Welcome,</h1>
-        <button class="log-out">Log Out</button>
+        <h1 class="title">Travel<span class="logo-span">Tracker</span></h1>
+        <button class="heading__button log-out">Log Out</button>
       </header>
       <section id="user-pending-trips" class="pending-trips">
         <h2>Pending Trips</h2>
@@ -31,6 +34,7 @@
         </section>
       </section>
       <section id="user-main-form" class="main-display">
+        <h2 class="js-welcome">Welcome,</h2>
         <div class="form__background">
           <section class="form__wrapper">
             <form class="form">
@@ -55,7 +59,7 @@
                 </div>
               </fieldset>
               <p class="form__error hidden">Please enter a date and travelers/duration as numbers.</p>
-              <button class="form__button input__cost-button" type="button">Caclulate Cost</button>
+              <button class="form__button input__cost-button" type="button">Calculate Cost</button>
               <div class="form__cost-wrapper hidden">
                 <p>Your trip will cost</p>
                 <p class="input__cost-display">840 dollars</p>
