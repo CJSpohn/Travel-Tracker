@@ -9,15 +9,16 @@
       <div class="login__element-wrapper">
         <h1 class="login__title">Travel<span class="logo-span">Tracker</span></h1>
         <p class="sub-title">Traveling is stressful. Planning for it doesn't have to be.</p>
-        <button class="heading__button login__button">Sign In</button>
+        <button class="heading__button login__button js-login-form">Sign In</button>
       </div>
-      <section class="login__form">
+      <section class="login__form hidden">
         <h1 class="login__title">Travel<span class="logo-span">Tracker</span></h1>
         <label class="login__label" for="username">Username:</label>
-        <input class="login__input" id="username" type="text">
+        <input class="login__input js-username" id="username" type="text">
         <label class="login__label" for="password">Password:</label>
-        <input class="login__input" id="password" type="password">
-        <button class="heading__button login__button">Sign In</button>
+        <input class="login__input js-password" id="password" type="password">
+        <p class="login__error"></p>
+        <button class="heading__button login__button js-enter">Sign In</button>
       </section>
     </div>
     <div class="user-wrapper hidden">

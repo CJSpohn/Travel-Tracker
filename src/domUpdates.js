@@ -1,4 +1,17 @@
 let domUpdates = {
+  showSignIn() {
+    document.querySelector('.login__form').classList.remove('hidden');
+  },
+
+  displayLogInError() {
+    document.querySelector('.login__error').innerText = 'Invalid username or password';
+  },
+
+  logInUser() {
+    document.querySelector('.login__wrapper').classList.add('hidden');
+    document.querySelector('.user-wrapper').classList.remove('hidden');
+  },
+
   greetUser(user) {
     document.querySelector('.js-welcome').innerText += ' ' + user.name.split(' ')[0]
   },

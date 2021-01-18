@@ -6,7 +6,9 @@ import apiFetch from './fetch';
 import Trip from './Trip';
 import User from './User';
 
+const signInButton = document.querySelector('.js-login-form');
 const signOutButton = document.querySelector('.log-out');
+const enterSiteButton = document.querySelector('.js-enter');
 const costButton = document.querySelector('.input__cost-button');
 const confirmTripButton = document.querySelector('.input__confirm-button');
 const clearTripButton = document.querySelector('.input__clear-button');
@@ -27,14 +29,14 @@ const sortUserTrips = (trips) => {
   })
 }
 
-const onStartup = () => {
+const onStartup = (userId) => {
   const usersPromise = apiFetch.getData('http://localhost:3001/api/v1/travelers');
   const tripsPromise = apiFetch.getData('http://localhost:3001/api/v1/trips');
   const destinationsPromise = apiFetch.getData('http://localhost:3001/api/v1/destinations');
 
   Promise.all([usersPromise, tripsPromise, destinationsPromise])
     .then(promises => {
-      currentUser = new User(promises[0].travelers[20]);
+      currentUser = new User(promises[0].travelers[userId - 1]);
       trips = promises[1].trips;
       destinations = promises[2].destinations;
       domUpdates.greetUser(currentUser);
@@ -43,6 +45,24 @@ const onStartup = () => {
       domUpdates.populateExpenditures(currentUser, destinations);
     })
     domUpdates.setStartDate();
+}
+
+const verifyCredentials = () => {
+  let username = document.querySelector('.js-username').value;
+  let password = document.querySelector('.js-password').value;
+  let userId = username.slice(-2);
+  if (parseInt(userId) % 50 >= 1
+    && username.includes('traveler')
+    && parseInt(userId) > 0) {
+    if (password === 'travel2020') {
+      console.log(`got pass`)
+      domUpdates.logInUser();
+      onStartup(userId);
+      return
+    }
+  } else {
+    domUpdates.displayLogInError();
+  }
 }
 
 const verifyInputs = (stringInputs, numberInputs) => {
@@ -105,9 +125,9 @@ const clearTrip = () => {
   domUpdates.clearTripForm();
 }
 
-
-window.onload = onStartup();
 costButton.addEventListener('click', calculateTrip);
 confirmTripButton.addEventListener('click', postTrip);
 clearTripButton.addEventListener('click', clearTrip)
+signInButton.addEventListener('click', domUpdates.showSignIn);
+enterSiteButton.addEventListener('click', verifyCredentials)
 // signOutButton.addEventListener('click', log)

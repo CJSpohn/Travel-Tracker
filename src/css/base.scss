@@ -60,7 +60,7 @@ p {
   left: 25vw;
   top: 25vh;
   width: 50%;
-  height: 50%;
+  height: 55%;
   font-size: 2rem;
   border-radius: 50px;
   background-color: lightgrey;
@@ -77,6 +77,15 @@ p {
 .login__input {
   height: 3vh;
   width: 15vw;
+}
+
+.login__error {
+  color: red;
+  font-size: 1.5rem;
+}
+
+.login__button {
+  margin-top: 5vh;
 }
 
 // -------------------USER LAYOUT-------------------
