@@ -51,7 +51,7 @@ const verifyCredentials = () => {
   let username = document.querySelector('.js-username').value;
   let password = document.querySelector('.js-password').value;
   let userId = username.slice(-2);
-  if (parseInt(userId) % 50 >= 1
+  if (parseInt(userId) / 50 <= 1
     && username.includes('traveler')
     && parseInt(userId) > 0) {
     if (password === 'travel2020') {
@@ -130,4 +130,4 @@ confirmTripButton.addEventListener('click', postTrip);
 clearTripButton.addEventListener('click', clearTrip)
 signInButton.addEventListener('click', domUpdates.showSignIn);
 enterSiteButton.addEventListener('click', verifyCredentials)
-// signOutButton.addEventListener('click', log)
+signOutButton.addEventListener('click', domUpdates.logOut)

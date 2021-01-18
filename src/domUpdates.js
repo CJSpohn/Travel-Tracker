@@ -12,6 +12,15 @@ let domUpdates = {
     document.querySelector('.user-wrapper').classList.remove('hidden');
   },
 
+  logOut() {
+    document.querySelector('.login__form').classList.add('hidden');
+    document.querySelector('.user-wrapper').classList.add('hidden');
+    document.querySelector('.login__wrapper').classList.remove('hidden');
+    document.querySelector('.login__error').innerText = '';
+    document.querySelector('.js-username').value = '';
+    document.querySelector('.js-password').value = '';
+  },
+
   greetUser(user) {
     document.querySelector('.js-welcome').innerText += ' ' + user.name.split(' ')[0]
   },
@@ -65,10 +74,18 @@ let domUpdates = {
 
   populateExpenditures(user, destinations) {
     const expenses = user.getTripCostsForCalendarYear(destinations);
+    this.clearExpenditures();
     document.querySelector('.trips-taken').innerText += ` ${expenses.tripsTaken}`;
     document.querySelector('.trips-cost').innerText += expenses.tripCosts;
     document.querySelector('.trips-fees').innerText += expenses.agentFees;
     document.querySelector('.trips-total').innerText += expenses.totalSpent;
+  },
+
+  clearExpenditures() {
+    document.querySelector('.trips-taken').innerText = '';
+    document.querySelector('.trips-cost').innerText = '';
+    document.querySelector('.trips-fees').innerText = '';
+    document.querySelector('.trips-total').innerText = '';
   },
 
   setStartDate() {
