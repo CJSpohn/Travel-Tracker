@@ -55,7 +55,6 @@ const verifyCredentials = () => {
     && username.includes('traveler')
     && parseInt(userId) > 0) {
     if (password === 'travel2020') {
-      console.log(`got pass`)
       domUpdates.logInUser();
       onStartup(userId);
       return
@@ -114,7 +113,7 @@ const updatePendingTrips = () => {
 const postTrip = () => {
   apiFetch.postData('http://localhost:3001/api/v1/trips', currentTrip)
     .then(res => {
-      console.log(res);
+      console.log('res', res);
       domUpdates.hideConfirmScreen();
       domUpdates.revealCalculateButton();
       updatePendingTrips();

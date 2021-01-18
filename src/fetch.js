@@ -1,4 +1,11 @@
 let apiFetch = {
+  confirmStatus(response) {
+    if (!response.ok) {
+      throw 'Looks like you already booked this trip!';
+    }
+    return response;
+  },
+
   getData(url) {
     return fetch(url)
       .then(res => res.json())
@@ -12,6 +19,7 @@ let apiFetch = {
       body: JSON.stringify(tripInfo)
     }
     return fetch(url, options)
+      .then(response => this.confirmStatus(response))
       .then(res => res.json())
       .catch(err => console.log(err))
   }
