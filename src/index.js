@@ -135,7 +135,6 @@ const calculateTrip = () => {
   const tripCost = currentTrip.calculateCost(destinations);
   domUpdates.hideFormError();
   domUpdates.revealCostDisplay(tripCost);
-  console.log(currentTrip);
 }
 
 const updateTrips = () => {
@@ -154,13 +153,8 @@ const postTrip = () => {
     updateTrips();
   })
   .catch(err => {
-    console.log(err);
     domUpdates.displayPostError();
   });
-}
-
-const approveTripRequest = () => {
-
 }
 
 costButton.addEventListener('click', calculateTrip);
