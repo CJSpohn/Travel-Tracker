@@ -357,4 +357,11 @@ fieldset {
   .log-out {
     margin-bottom: 5px;
   }
+  .agent__dashboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      "agent-income"
+      "agent-pending";
+  }
 }

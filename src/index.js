@@ -157,6 +157,10 @@ const postTrip = () => {
   });
 }
 
+const approveTripRequest = () => {
+
+}
+
 costButton.addEventListener('click', calculateTrip);
 confirmTripButton.addEventListener('click', postTrip);
 clearTripButton.addEventListener('click', () => {
