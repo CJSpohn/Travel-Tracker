@@ -1,10 +1,11 @@
 .agent__dashboard {
   margin-left: 15vw;
+  margin-top: 5vh;
   display: grid;
   height: 200vh;
   width: 70vw;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 2fr 2fr;
+  grid-template-rows: 0.75fr 2fr 2fr;
   grid-template-areas:
     "agent-income"
     "agent-travelers"
@@ -13,16 +14,24 @@
 }
 
 .agent__income {
-  background-color: red;
+  text-align: center;
+  border: 1px solid red;
   grid-area: agent-income;
 }
 
 .agent__active-travelers {
-  background-color: purple;
+  text-align: center;
+  border:1px solid purple;
   grid-area: agent-travelers;
 }
 
 .agent__pending-trips {
-  background-color: orange;
+  border: 1px solid orange;
   grid-area: agent-pending;
+}
+
+.agent__income-amount {
+  margin-top: 2vh;
+  font-size: 4rem;
+  color: green;
 }
