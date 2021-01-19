@@ -2,6 +2,7 @@ import './css/base.scss';
 
 import domUpdates from './domUpdates';
 import apiFetch from './fetch';
+import agentDom from './agentDom';
 
 import Trip from './Trip';
 import User from './User';
@@ -56,15 +57,16 @@ const onAgentStartup = () => {
       users = promises[0].travelers;
       trips = promises[1].trips;
       destinations = promises[2].destinations;
-      agent = new Agent()
+      agent = new Agent({id: 1, name: 'Agent', travelerType: 'Agent', trips: trips });
+      console.log(agent);
     })
-
 }
 
 const verifyCredentials = () => {
   let username = document.querySelector('.js-username').value;
   let password = document.querySelector('.js-password').value;
   if (username === 'agency' && password === 'travel2020') {
+    agentDom.logInAgent();
     onAgentStartup();
     return
   }

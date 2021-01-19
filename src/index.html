@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <div class="login__wrapper hidden">
+    <div class="login__wrapper">
       <div class="login__element-wrapper">
         <h1 class="login__title">Travel<span class="logo-span">Tracker</span></h1>
         <p class="sub-title">Traveling is stressful. Planning for it doesn't have to be.</p>
@@ -109,7 +109,7 @@
         </section>
       </footer>
     </div>
-    <div class="agent-wrapper">
+    <div class="agent-wrapper hidden">
       <header id="agent-heading" class="agent__heading heading">
         <h1 class="title">Travel<span class="logo-span">Tracker</span></h1>
         <button class="heading__button log-out">Log Out</button>
@@ -128,7 +128,7 @@
       </section>
       <section id="agent-pending" class="agent__pending-trips">
         <h2>Pending Trips</h2>
-        <div class="agent__pending-trip">
+        <template class="agent__pending-trip">
           <hr>
           <div class="a-pending-trips__trip-wrapper">
             <p>User: <span class="a-pening-trip__user"></span></p>
@@ -138,7 +138,7 @@
             <p>Days: <span class="a-pending-trip__duration"></span></p>
             <button class="form__button agent__approve-button">Approve this trip</button>
           </div>
-        </div>
+        </template>
       </section>
       </section>
     </div>
