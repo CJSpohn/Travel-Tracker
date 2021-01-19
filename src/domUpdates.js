@@ -26,16 +26,18 @@ let domUpdates = {
     this.hidePendingHeader();
     let tripDestination = destinations.find(destination => destination.id === trip.destinationID);
     const template = document.querySelector('.pending-trips__trip').content;
-    const destination = template.querySelector('.pending-trip__destination');
-    const date = template.querySelector('.pending-trip__date');
-    const travelers = template.querySelector('.pending-trip__travelers');
-    const duration = template.querySelector('.pending-trip__duration');
+    template.querySelector('.pending-trip__destination').textContent = tripDestination.destination;
+    template.querySelector('.pending-trip__date').textContent = trip.date;
+    template.querySelector('.pending-trip__travelers').textContent = trip.travelers;
+    template.querySelector('.pending-trip__duration').textContent = trip.duration;
     const status = template.querySelector('.pending-trip__status');
-    destination.textContent = tripDestination.destination;
-    date.textContent = trip.date;
-    travelers.textContent = trip.travelers;
-    duration.textContent = trip.duration;
     expired ? status.textContent = 'This request has expired.' : status.textContent = trip.status;
+    this.addStatusClassList(trip, status);
+    document.querySelector('.pending-trips__wrapper').appendChild(
+      document.importNode(template, true));
+  },
+
+  addStatusClassList(trip, status) {
     if (trip.status === 'pending') {
       status.classList.add('pending');
       status.classList.remove('approved');
@@ -43,18 +45,14 @@ let domUpdates = {
       status.classList.add('approved');
       status.classList.remove('pending');
     }
-    document.querySelector('.pending-trips__wrapper').appendChild(
-      document.importNode(template, true));
   },
 
   addPastTrip(trip, destinations) {
     let tripDestination = destinations.find(destination => destination.id === trip.destinationID);
     const template = document.querySelector('.past-trips__trip').content;
-    const destination = template.querySelector('.past-trips__destination');
-    const date = template.querySelector('.past-trips__date');
+    template.querySelector('.past-trips__destination').textContent = tripDestination.destination;
+    template.querySelector('.past-trips__date').textContent = trip.date;
     const image = template.querySelector('.past-trips__image');
-    destination.textContent = tripDestination.destination;
-    date.textContent = trip.date;
     image.src = tripDestination.image;
     image.alt = tripDestination.alt;
     document.querySelector('.past-trips__wrapper').appendChild(
@@ -83,7 +81,7 @@ let domUpdates = {
     let today = new Date();
     let day = today.getDate();
     let month = today.getMonth() + 1;
-    const year = today.getFullYear();
+    let year = today.getFullYear();
     if (day < 10) {
       day = '0' + day
     }

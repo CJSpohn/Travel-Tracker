@@ -1,6 +1,5 @@
 const agentDom = {
   displayLoadError() {
-    console.log('ran')
     document.querySelector('.agent-loading-error').innerText = `
     Something went wrong. Your remote server probably isn't started. Check the Readme for more information.
     `

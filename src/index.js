@@ -74,23 +74,30 @@ const onAgentStartup = () => {
     .catch(err => agentDom.displayLoadError());
 }
 
+const validUsername = (userId, username, password) => {
+  if (parseInt(userId) / 50 <= 1
+    && parseInt(userId) > 0
+    && username.includes('traveler')
+    && username.length === 10) {
+    if (password === 'travel2020') {
+      return true
+    }
+  }
+  return false;
+}
+
 const verifyCredentials = () => {
   let username = document.querySelector('.js-username').value;
   let password = document.querySelector('.js-password').value;
+  let userId = username.slice(-2);
   if (username === 'agency' && password === 'travel2020') {
     agentDom.logInAgent();
     onAgentStartup();
     return
   }
-  let userId = username.slice(-2);
-  if (parseInt(userId) / 50 <= 1
-    && username.includes('traveler')
-    && parseInt(userId) > 0) {
-    if (password === 'travel2020') {
-      domUpdates.logInUser();
-      onStartup(userId);
-      return
-    }
+  if (validUsername(userId, username, password)) {
+    domUpdates.logInUser();
+    onStartup(userId);
   } else {
     domUpdates.displayLogInError();
   }
@@ -111,7 +118,7 @@ const verifyInputs = (stringInputs, numberInputs) => {
   return inputsCorrect;
 }
 
-const calculateTrip = () => {
+const buildTrip = () => {
   const destinationName = document.querySelector('.form__list').value;
   const startDate = document.querySelector('.start-date').value.replaceAll('-', '/');
   const travelers = document.querySelector('.travelers').value;
@@ -131,11 +138,15 @@ const calculateTrip = () => {
     date: startDate,
     duration: duration,
   };
+  return tripDetails;
+}
+
+const calculateTrip = () => {
+  const tripDetails = buildTrip();
   currentTrip = new Trip(tripDetails);
   const tripCost = currentTrip.calculateCost(destinations);
   domUpdates.hideFormError();
   domUpdates.revealCostDisplay(tripCost);
-  console.log(currentTrip);
 }
 
 const updateTrips = () => {
@@ -154,13 +165,8 @@ const postTrip = () => {
     updateTrips();
   })
   .catch(err => {
-    console.log(err);
     domUpdates.displayPostError();
   });
-}
-
-const approveTripRequest = () => {
-
 }
 
 costButton.addEventListener('click', calculateTrip);
