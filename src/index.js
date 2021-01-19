@@ -5,6 +5,7 @@ import apiFetch from './fetch';
 import agentDom from './agentDom';
 
 import Trip from './Trip';
+import Agent from './Agent';
 import User from './User';
 
 const signInButton = document.querySelector('.js-login-form');
@@ -48,8 +49,15 @@ const onStartup = (userId) => {
     domUpdates.setStartDate();
 }
 
+const populateAgentDom = (trips, destinations) => {
+  agent.getTrips(trips);
+  const tripInfoForCalendarYear = agent.getTripCostsForCalendarYear(destinations);
+  agentDom.populateIncome(tripInfoForCalendarYear);
+  agentDom.populatePendingTrips(agent.getPendingTrips(Date.now()))
+}
+
 const onAgentStartup = () => {
-  const usersPromise = apiFetch.getData(`http://localhost:3001/api/v1/travelers/users`);
+  const usersPromise = apiFetch.getData(`http://localhost:3001/api/v1/travelers`);
   const tripsPromise = apiFetch.getData('http://localhost:3001/api/v1/trips');
   const destinationsPromise = apiFetch.getData('http://localhost:3001/api/v1/destinations');
   Promise.all([usersPromise, tripsPromise, destinationsPromise])
@@ -57,8 +65,8 @@ const onAgentStartup = () => {
       users = promises[0].travelers;
       trips = promises[1].trips;
       destinations = promises[2].destinations;
-      agent = new Agent({id: 1, name: 'Agent', travelerType: 'Agent', trips: trips });
-      console.log(agent);
+      agent = new Agent( { id: 1, name: 'Agent', travelerType: 'Agent' } );
+      populateAgentDom(trips, destinations);
     })
 }
 

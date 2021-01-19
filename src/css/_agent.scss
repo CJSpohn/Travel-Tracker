@@ -14,23 +14,20 @@
 
 .agent__income {
   text-align: center;
-  border: 1px solid red;
   grid-area: agent-income;
 }
 
 .agent__active-travelers {
-  border:1px solid purple;
   grid-area: agent-travelers;
 }
 
 .agent__pending-trips {
   text-align: center;
-  border: 1px solid orange;
   grid-area: agent-pending;
 }
 
-.agent__income-amount {
-  margin-top: 2vh;
+.agent__income-amount,
+.agent__trips-taken {
   font-size: 4rem;
   color: green;
 }
