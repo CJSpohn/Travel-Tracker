@@ -116,16 +116,29 @@
       </header>
       <section class="agent__dashboard">
       <section id="agent-income" class="agent__income">
-        <h2>Past year:</h2>
-        <p>Your total income for the past year: </p>
+        <h2>Past year</h2>
+        <p>Total income</p>
         <p><span class="agent__income-amount">$3162</span></p>
       </section>
       <section id="agent-travelers" class="agent__active-travelers">
-        <h2>Pending Trips:</h2>
-        <hr>
+        <h2>Users on Vacation</h2>
+        <ul>
+          <li>Ham Leadbeater is in Hawaii.</li>
+        </ul>
       </section>
       <section id="agent-pending" class="agent__pending-trips">
-
+        <h2>Pending Trips</h2>
+        <div class="agent__pending-trip">
+          <hr>
+          <div class="a-pending-trips__trip-wrapper">
+            <p>User: <span class="a-pening-trip__user"></span></p>
+            <p>To: <span class="a-pending-trip__destination"></span></p>
+            <p>Leaving on: <span class="a-pending-trip__date"></span></p>
+            <p>Travelers: <span class="a-pending-trip__travelers"></span></p>
+            <p>Days: <span class="a-pending-trip__duration"></span></p>
+            <button class="form__button agent__approve-button">Approve this trip</button>
+          </div>
+        </div>
       </section>
       </section>
     </div>

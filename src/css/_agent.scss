@@ -5,7 +5,7 @@
   height: 200vh;
   width: 70vw;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.75fr 2fr 2fr;
+  grid-template-rows: 0.5fr 2fr 2fr;
   grid-template-areas:
     "agent-income"
     "agent-travelers"
@@ -20,12 +20,12 @@
 }
 
 .agent__active-travelers {
-  text-align: center;
   border:1px solid purple;
   grid-area: agent-travelers;
 }
 
 .agent__pending-trips {
+  text-align: center;
   border: 1px solid orange;
   grid-area: agent-pending;
 }
