@@ -1,4 +1,10 @@
 let domUpdates = {
+  displayLoadError() {
+    document.querySelector('.js-welcome').innerText =
+    `Something went wrong. Your remote server probably isn\'t started.
+    Check the readme for more information.`
+  },
+
   showSignIn() {
     document.querySelector('.login__form').classList.remove('hidden');
   },
