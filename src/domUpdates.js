@@ -36,6 +36,12 @@ let domUpdates = {
     travelers.textContent = trip.travelers;
     duration.textContent = trip.duration;
     expired ? status.textContent = 'This request has expired.' : status.textContent = trip.status;
+    this.getStatusClassList(trip, status);
+    document.querySelector('.pending-trips__wrapper').appendChild(
+      document.importNode(template, true));
+  },
+
+  getStatusClassList(trip, status) {
     if (trip.status === 'pending') {
       status.classList.add('pending');
       status.classList.remove('approved');
@@ -43,8 +49,6 @@ let domUpdates = {
       status.classList.add('approved');
       status.classList.remove('pending');
     }
-    document.querySelector('.pending-trips__wrapper').appendChild(
-      document.importNode(template, true));
   },
 
   addPastTrip(trip, destinations) {
@@ -80,7 +84,7 @@ let domUpdates = {
 
   setStartDate() {
     const calendar = document.querySelector('.start-date')
-    let today = new Date();
+    const today = new Date();
     let day = today.getDate();
     let month = today.getMonth() + 1;
     const year = today.getFullYear();
