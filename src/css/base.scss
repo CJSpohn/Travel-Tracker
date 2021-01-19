@@ -306,16 +306,17 @@ fieldset {
 @media (max-width: 560px) {
   .login__element-wrapper {
     position: absolute;
-    left: 20vw;
-    top: 70vh;
+    left: 10vw;
+    top: 60vh;
   }
 
   .login__title {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    font-weight: 700;
   }
 
   .sub-title {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .login__wrapper {

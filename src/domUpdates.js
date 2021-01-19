@@ -75,7 +75,6 @@ let domUpdates = {
 
   populateExpenditures(user, destinations) {
     const expenses = user.getTripCostsForCalendarYear(destinations);
-    this.clearExpenditures();
     document.querySelector('.trips-taken').innerText += ` ${expenses.tripsTaken}`;
     document.querySelector('.trips-cost').innerText += expenses.tripCosts;
     document.querySelector('.trips-fees').innerText += expenses.agentFees;
