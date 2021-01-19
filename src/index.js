@@ -13,7 +13,7 @@ const costButton = document.querySelector('.input__cost-button');
 const confirmTripButton = document.querySelector('.input__confirm-button');
 const clearTripButton = document.querySelector('.input__clear-button');
 
-let currentUser, trips, destinations, currentTrip;
+let currentUser, trips, destinations, currentTrip, users, agent;
 
 const sortUserTrips = (trips) => {
   const currentDate = Date.now();
@@ -34,7 +34,6 @@ const onStartup = (userId) => {
   const usersPromise = apiFetch.getData(`http://localhost:3001/api/v1/travelers/${userId}`);
   const tripsPromise = apiFetch.getData('http://localhost:3001/api/v1/trips');
   const destinationsPromise = apiFetch.getData('http://localhost:3001/api/v1/destinations');
-
   Promise.all([usersPromise, tripsPromise, destinationsPromise])
     .then(promises => {
       currentUser = new User(promises[0]);
@@ -48,9 +47,27 @@ const onStartup = (userId) => {
     domUpdates.setStartDate();
 }
 
+const onAgentStartup = () => {
+  const usersPromise = apiFetch.getData(`http://localhost:3001/api/v1/travelers/users`);
+  const tripsPromise = apiFetch.getData('http://localhost:3001/api/v1/trips');
+  const destinationsPromise = apiFetch.getData('http://localhost:3001/api/v1/destinations');
+  Promise.all([usersPromise, tripsPromise, destinationsPromise])
+    .then(promises => {
+      users = promises[0].travelers;
+      trips = promises[1].trips;
+      destinations = promises[2].destinations;
+      
+    })
+
+}
+
 const verifyCredentials = () => {
   let username = document.querySelector('.js-username').value;
   let password = document.querySelector('.js-password').value;
+  if (username === 'agency' && password === 'travel2020') {
+    onAgentStartup();
+    return
+  }
   let userId = username.slice(-2);
   if (parseInt(userId) / 50 <= 1
     && username.includes('traveler')
