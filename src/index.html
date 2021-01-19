@@ -3,16 +3,26 @@
   <head>
     <title>Travel Tracker</title>
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <div class="login-wrapper hidden">
-      <div class="heading__element-wrapper">
-        <h1 class="title">Travel<span class="logo-span">Tracker</span></h1>
+    <div class="login__wrapper">
+      <div class="login__element-wrapper">
+        <h1 class="login__title">Travel<span class="logo-span">Tracker</span></h1>
         <p class="sub-title">Traveling is stressful. Planning for it doesn't have to be.</p>
-        <button class="heading__button log-in">Sign In</button>
+        <button class="heading__button login__button js-login-form">Sign In</button>
       </div>
+      <section class="login__form hidden">
+        <h1 class="login__title">Travel<span class="logo-span">Tracker</span></h1>
+        <label class="login__label" for="username">Username:</label>
+        <input class="login__input js-username" id="username" type="text">
+        <label class="login__label" for="password">Password:</label>
+        <input class="login__input js-password" id="password" type="password">
+        <p class="login__error"></p>
+        <button class="heading__button login__button js-enter">Sign In</button>
+      </section>
     </div>
-    <div class="user-wrapper">
+    <div class="user-wrapper hidden">
       <header id="heading" class="heading heading--user">
         <h1 class="title">Travel<span class="logo-span">Tracker</span></h1>
         <button class="heading__button log-out">Log Out</button>
@@ -34,7 +44,9 @@
         </section>
       </section>
       <section id="user-main-form" class="main-display">
-        <h2 class="js-welcome">Welcome,</h2>
+        <h2 class="main-welcome js-welcome">Welcome,</h2>
+        <p class="main-success-text hidden">Your trip has been posted!</p>
+        <p class="main-error-text hidden">This trip has already been posted!</p>
         <div class="form__background">
           <section class="form__wrapper">
             <form class="form">
@@ -90,10 +102,10 @@
         <section class="past-trips__expenditures">
           <h2>Expense Report: (calendar year)</h2>
           <hr>
-          <p class="past-trips__expenditures-text trips-taken">Trips taken:</p>
-          <p class="past-trips__expenditures-text trips-cost">Trip costs: $</p>
-          <p class="past-trips__expenditures-text trips-fees">Agent fees: $</p>
-          <p class="past-trips__expenditures-text trips-total">Total Spent: $</p>
+          <p class="past-trips__expenditures-text">Trips taken:<span class="trips-taken"></span></p>
+          <p class="past-trips__expenditures-text">Trip costs: $<span class="trips-cost"></span></p>
+          <p class="past-trips__expenditures-text">Agent fees: $<span class="trips-fees"></span></p>
+          <p class="past-trips__expenditures-text">Total Spent: $<span class="trips-total"></span></p>
         </section>
       </footer>
     </div>

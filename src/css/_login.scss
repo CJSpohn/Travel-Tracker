@@ -1,0 +1,61 @@
+// -------------------LOG IN SCREEN-------------------
+
+.login__wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../images/ocean.jpg");
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.login__element-wrapper {
+  position: absolute;
+  padding-right: 2vw;
+  left: 45vw;
+  top: 50vh;
+}
+
+.login__title {
+  font-size: 4rem;
+}
+
+.login__button {
+  margin-top: 2vh;
+}
+
+.login__form {
+  @extend .vertical-wrapper;
+  position: absolute;
+  left: 12.5vw;
+  top: 25vh;
+  width: 75%;
+  height: 55%;
+  font-size: 2rem;
+  border-radius: 50px;
+  padding: 5px;
+  background-color: lightgrey;
+}
+
+.login__heading {
+  margin-top: 2vh;
+}
+
+.login__label {
+  margin-top: 3vh;
+}
+
+.login__input {
+  height: 3vh;
+  width: 15vw;
+}
+
+.login__error {
+  color: red;
+  font-size: 1.5rem;
+}
+
+.login__button {
+  margin-top: 5vh;
+}

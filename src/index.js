@@ -6,7 +6,9 @@ import apiFetch from './fetch';
 import Trip from './Trip';
 import User from './User';
 
+const signInButton = document.querySelector('.js-login-form');
 const signOutButton = document.querySelector('.log-out');
+const enterSiteButton = document.querySelector('.js-enter');
 const costButton = document.querySelector('.input__cost-button');
 const confirmTripButton = document.querySelector('.input__confirm-button');
 const clearTripButton = document.querySelector('.input__clear-button');
@@ -17,9 +19,10 @@ const sortUserTrips = (trips) => {
   const currentDate = Date.now();
   trips.forEach(trip => {
     const tripDate = new Date(trip.date);
-    if (tripDate.getTime() > currentDate || trip.status === 'pending') {
+    if (trip.status === 'pending') {
       domUpdates.hidePendingHeader();
-      domUpdates.addPendingTrip(trip, destinations)
+      let expired = tripDate.getTime() < currentDate;
+      domUpdates.addPendingTrip(trip, destinations, expired)
     } else {
       domUpdates.hidePastHeader();
       domUpdates.addPastTrip(trip, destinations);
@@ -27,14 +30,14 @@ const sortUserTrips = (trips) => {
   })
 }
 
-const onStartup = () => {
-  const usersPromise = apiFetch.getData('http://localhost:3001/api/v1/travelers');
+const onStartup = (userId) => {
+  const usersPromise = apiFetch.getData(`http://localhost:3001/api/v1/travelers/${userId}`);
   const tripsPromise = apiFetch.getData('http://localhost:3001/api/v1/trips');
   const destinationsPromise = apiFetch.getData('http://localhost:3001/api/v1/destinations');
 
   Promise.all([usersPromise, tripsPromise, destinationsPromise])
     .then(promises => {
-      currentUser = new User(promises[0].travelers[20]);
+      currentUser = new User(promises[0]);
       trips = promises[1].trips;
       destinations = promises[2].destinations;
       domUpdates.greetUser(currentUser);
@@ -43,6 +46,23 @@ const onStartup = () => {
       domUpdates.populateExpenditures(currentUser, destinations);
     })
     domUpdates.setStartDate();
+}
+
+const verifyCredentials = () => {
+  let username = document.querySelector('.js-username').value;
+  let password = document.querySelector('.js-password').value;
+  let userId = username.slice(-2);
+  if (parseInt(userId) / 50 <= 1
+    && username.includes('traveler')
+    && parseInt(userId) > 0) {
+    if (password === 'travel2020') {
+      domUpdates.logInUser();
+      onStartup(userId);
+      return
+    }
+  } else {
+    domUpdates.displayLogInError();
+  }
 }
 
 const verifyInputs = (stringInputs, numberInputs) => {
@@ -65,7 +85,7 @@ const calculateTrip = () => {
   const startDate = document.querySelector('.start-date').value.replaceAll('-', '/');
   const travelers = document.querySelector('.travelers').value;
   const duration = document.querySelector('.duration').value;
-  const id = trips.length + 1;
+  const id = trips[trips.length-1].id + 1;
   const verifiedInputs = verifyInputs( [ startDate ], [ travelers, duration ] );
   if (!verifiedInputs) {
     domUpdates.revealFormError();
@@ -79,35 +99,42 @@ const calculateTrip = () => {
     travelers: travelers,
     date: startDate,
     duration: duration,
-  }
+  };
   currentTrip = new Trip(tripDetails);
   const tripCost = currentTrip.calculateCost(destinations);
   domUpdates.hideFormError();
   domUpdates.revealCostDisplay(tripCost);
-  console.log(currentTrip)
+  console.log(currentTrip);
 }
 
-const updatePendingTrips = () => {
+const updateTrips = () => {
   domUpdates.addPendingTrip(currentTrip, destinations)
+  apiFetch.getData('http://localhost:3001/api/v1/trips')
+    .then(res => trips = res.trips);
 }
 
 const postTrip = () => {
   apiFetch.postData('http://localhost:3001/api/v1/trips', currentTrip)
-    .then(res => {
-      console.log(res);
-      domUpdates.hideConfirmScreen();
-      domUpdates.revealCalculateButton();
-      updatePendingTrips();
-    });
+  .then(res => {
+    domUpdates.hideConfirmScreen();
+    domUpdates.revealCalculateButton();
+    domUpdates.displayPostSuccess();
+    domUpdates.clearTripForm();
+    updateTrips();
+  })
+  .catch(err => {
+    console.log(err);
+    domUpdates.displayPostError();
+  });
 }
 
-const clearTrip = () => {
-  domUpdates.clearTripForm();
-}
-
-
-window.onload = onStartup();
 costButton.addEventListener('click', calculateTrip);
 confirmTripButton.addEventListener('click', postTrip);
-clearTripButton.addEventListener('click', clearTrip)
-// signOutButton.addEventListener('click', log)
+clearTripButton.addEventListener('click', () => {
+  domUpdates.clearTripForm();
+})
+signInButton.addEventListener('click', domUpdates.showSignIn);
+enterSiteButton.addEventListener('click', verifyCredentials);
+signOutButton.addEventListener('click', () => {
+  location.reload();
+})

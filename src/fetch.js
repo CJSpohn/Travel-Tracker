@@ -1,8 +1,17 @@
+import domUpdates from './domUpdates';
+
 let apiFetch = {
+  confirmStatus(response) {
+    if (!response.ok) {
+      throw response;
+    }
+    return response;
+  },
+
   getData(url) {
     return fetch(url)
       .then(res => res.json())
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   },
 
   postData(url, tripInfo) {
@@ -12,8 +21,8 @@ let apiFetch = {
       body: JSON.stringify(tripInfo)
     }
     return fetch(url, options)
+      .then(res => this.confirmStatus(res))
       .then(res => res.json())
-      .catch(err => console.log(err))
   }
 
 }

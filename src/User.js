@@ -20,7 +20,6 @@ class User {
     }, 0)
   }
 
-  //add method to get trips for calendar year then calculateTotalSpent
   getTripCostsForCalendarYear(destinations) {
     const currentYear = new Date().getFullYear();
     const calendarYearTripInfo = {
@@ -28,17 +27,16 @@ class User {
       tripCosts: 0,
       agentFees: 0,
       totalSpent: 0
-    }
-
+    };
     this.trips.forEach(trip => {
       if (trip.date.includes(currentYear) && trip.status === 'approved') {
-        let tripCost = this.calculateTotalSpent(destinations, [trip])
+        let tripCost = this.calculateTotalSpent(destinations, [trip]);
         calendarYearTripInfo.tripsTaken++;
         calendarYearTripInfo.tripCosts += tripCost;
         calendarYearTripInfo.agentFees += Math.floor(tripCost * 0.1);
         calendarYearTripInfo.totalSpent += Math.floor(tripCost * 1.1);
       }
-    })
+    });
     return calendarYearTripInfo;
   }
 }

@@ -1,9 +1,32 @@
 let domUpdates = {
+  showSignIn() {
+    document.querySelector('.login__form').classList.remove('hidden');
+  },
+
+  displayLogInError() {
+    document.querySelector('.login__error').innerText = 'Invalid username or password';
+  },
+
+  logInUser() {
+    document.querySelector('.login__wrapper').classList.add('hidden');
+    document.querySelector('.user-wrapper').classList.remove('hidden');
+  },
+
+  logOut() {
+    document.querySelector('.login__form').classList.add('hidden');
+    document.querySelector('.user-wrapper').classList.add('hidden');
+    document.querySelector('.login__wrapper').classList.remove('hidden');
+    document.querySelector('.login__error').innerText = '';
+    document.querySelector('.js-username').value = '';
+    document.querySelector('.js-password').value = '';
+  },
+
   greetUser(user) {
     document.querySelector('.js-welcome').innerText += ' ' + user.name.split(' ')[0]
   },
 
-  addPendingTrip(trip, destinations) {
+  addPendingTrip(trip, destinations, expired) {
+    this.hidePendingHeader();
     let tripDestination = destinations.find(destination => destination.id === trip.destinationID);
     const template = document.querySelector('.pending-trips__trip').content;
     const destination = template.querySelector('.pending-trip__destination');
@@ -15,7 +38,7 @@ let domUpdates = {
     date.textContent = trip.date;
     travelers.textContent = trip.travelers;
     duration.textContent = trip.duration;
-    status.textContent = trip.status;
+    expired ? status.textContent = 'This request has expired.' : status.textContent = trip.status;
     if (trip.status === 'pending') {
       status.classList.add('pending');
       status.classList.remove('approved');
@@ -61,28 +84,22 @@ let domUpdates = {
   setStartDate() {
     const calendar = document.querySelector('.start-date')
     let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth()+1;
-    const yyyy = today.getFullYear();
-    if (dd < 10) {
-      dd = '0' + dd
+    let day = today.getDate();
+    let month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    if (day < 10) {
+      day = '0' + day
     }
-    if (mm < 10) {
-      mm = '0' + mm
+    if (month < 10) {
+      month = '0' + month
     }
-    today = yyyy + '-' + mm + '-' + dd;
+    today = year + '-' + month + '-' + day;
     calendar.setAttribute("min", today);
   },
 
   updateCost(cost) {
     const costDisplay = document.querySelector('.input__cost-display');
     costDisplay.innerText = `$${cost}`
-  },
-
-  revealCostDisplay(cost) {
-    this.hideCalculateButton();
-    this.revealConfirmScreen();
-    this.updateCost(cost)
   },
 
   clearTripForm() {
@@ -92,6 +109,26 @@ let domUpdates = {
     document.querySelector('.duration').value = '';
     this.hideConfirmScreen();
     this.revealCalculateButton();
+  },
+
+  displayPostError() {
+    document.querySelector('.main-error-text').classList.remove('hidden');
+    setTimeout(() => {
+      document.querySelector('.main-error-text').classList.add('hidden');
+    }, 5000);
+  },
+
+  displayPostSuccess() {
+    document.querySelector('.main-success-text').classList.remove('hidden');
+    setTimeout(() => {
+      document.querySelector('.main-success-text').classList.add('hidden');
+    }, 5000);
+  },
+
+  revealCostDisplay(cost) {
+    this.hideCalculateButton();
+    this.revealConfirmScreen();
+    this.updateCost(cost)
   },
 
   revealFormError() {
@@ -124,7 +161,7 @@ let domUpdates = {
 
   hidePastHeader() {
     document.querySelector('.past-trips__header').classList.add('hidden')
-  }
+  },
 
 }
 
