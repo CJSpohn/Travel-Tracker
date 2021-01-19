@@ -24,7 +24,7 @@ __Utilizing New Technologies__
 
 * This was our second exposure to webpack. The webpack was created for us. We simply needed to incorporate the new tools.
 
-*SASS*
+*Sass*
 
 * I implemented color functions, extensions, mixins, and variables to help DRY up my CSS.
 
@@ -109,7 +109,7 @@ In future iterations I would love to continue with the functionality. Currently 
 
 ## Technologies
 
-The project was written in HTML, CSS with SASS, JavaScript and bundled through webpack.
+The project was written in HTML, CSS with Sass, JavaScript and bundled through webpack.
 
 Unit testing was accomplished through node.js using Mocha and Chai.
 
