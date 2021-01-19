@@ -109,11 +109,44 @@
         </section>
       </footer>
     </div>
-    <div class="agent-wrapper hidden"></div>
+    <div class="agent-wrapper hidden">
+      <header id="agent-heading" class="agent__heading heading">
+        <h1 class="title">Travel<span class="logo-span">Tracker</span></h1>
+        <button class="heading__button log-out">Log Out</button>
+      </header>
+      <section class="agent__dashboard">
+      <section id="agent-income" class="agent__income">
+        <h2>Past year</h2>
+        <hr>
+        <p>Number of Trips</p>
+        <p class=agent__trips-taken></p>
+        <p>Total income</p>
+        <p class="agent__income-amount">$</p>
 
+      </section>
+      <section id="agent-travelers" class="agent__active-travelers">
+        <h2>Users on Vacation</h2>
+        <hr>
+        <ul class="agent__active-travelers-list">
 
-
-
+        </ul>
+      </section>
+      <section id="agent-pending" class="agent__pending-trips">
+        <h2>Pending Trips</h2>
+        <template class="agent__pending-trip">
+          <hr>
+          <div class="a-pending-trips__trip-wrapper">
+            <p>User: <span class="a-pending-trip__user"></span></p>
+            <p>To: <span class="a-pending-trip__destination"></span></p>
+            <p>Leaving on: <span class="a-pending-trip__date"></span></p>
+            <p>Travelers: <span class="a-pending-trip__travelers"></span></p>
+            <p>Days: <span class="a-pending-trip__duration"></span></p>
+            <button class="form__button agent__approve-button">Approve this trip</button>
+          </div>
+        </template>
+      </section>
+      </section>
+    </div>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

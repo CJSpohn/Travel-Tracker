@@ -12,15 +12,6 @@ let domUpdates = {
     document.querySelector('.user-wrapper').classList.remove('hidden');
   },
 
-  logOut() {
-    document.querySelector('.login__form').classList.add('hidden');
-    document.querySelector('.user-wrapper').classList.add('hidden');
-    document.querySelector('.login__wrapper').classList.remove('hidden');
-    document.querySelector('.login__error').innerText = '';
-    document.querySelector('.js-username').value = '';
-    document.querySelector('.js-password').value = '';
-  },
-
   greetUser(user) {
     document.querySelector('.js-welcome').innerText += ' ' + user.name.split(' ')[0]
   },
