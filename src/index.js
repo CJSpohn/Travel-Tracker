@@ -53,7 +53,8 @@ const populateAgentDom = (trips, destinations) => {
   agent.getTrips(trips);
   const tripInfoForCalendarYear = agent.getTripCostsForCalendarYear(destinations);
   agentDom.populateIncome(tripInfoForCalendarYear);
-  agentDom.populatePendingTrips(agent.getPendingTrips(Date.now()))
+  const pendingTrips = agent.getPendingTrips(Date.now());
+  pendingTrips.forEach(trip => agentDom.populatePendingTrips(trip))
 }
 
 const onAgentStartup = () => {
