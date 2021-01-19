@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <div class="login__wrapper">
+    <div class="login__wrapper hidden">
       <div class="login__element-wrapper">
         <h1 class="login__title">Travel<span class="logo-span">Tracker</span></h1>
         <p class="sub-title">Traveling is stressful. Planning for it doesn't have to be.</p>
@@ -109,11 +109,23 @@
         </section>
       </footer>
     </div>
-    <div class="agent-wrapper hidden"></div>
+    <div class="agent-wrapper">
+      <header id="agent-heading" class="agent__heading heading">
+        <h1 class="title">Travel<span class="logo-span">Tracker</span></h1>
+        <button class="heading__button log-out">Log Out</button>
+      </header>
+      <section class="agent__dashboard">
+      <section id="agent-income" class="agent__income">
 
+      </section>
+      <section id="agent-travelers" class="agent__active-travelers">
 
+      </section>
+      <section id="agent-pending" class="agent__pending-trips">
 
-
+      </section>
+      </section>
+    </div>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

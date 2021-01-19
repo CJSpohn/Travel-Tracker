@@ -1,0 +1,28 @@
+.agent__dashboard {
+  margin-left: 15vw;
+  display: grid;
+  height: 200vh;
+  width: 70vw;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 2fr;
+  grid-template-areas:
+    "agent-income"
+    "agent-travelers"
+    "agent-pending";
+  grid-gap: 0.2rem;
+}
+
+.agent__income {
+  background-color: red;
+  grid-area: agent-income;
+}
+
+.agent__active-travelers {
+  background-color: purple;
+  grid-area: agent-travelers;
+}
+
+.agent__pending-trips {
+  background-color: orange;
+  grid-area: agent-pending;
+}
