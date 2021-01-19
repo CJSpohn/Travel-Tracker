@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import User from '../src/User';
-import travelerData from 'travelers';
+import User from '../src/User.js';
+import travelerData from './travelers.js';
 
 let user1, user2, user3;
 
@@ -16,9 +16,10 @@ describe('User', () => {
 
   it('should have an id, name, travelerType, and trips', () => {
     expect(user1).to.eql({
-      "id": 1,
-      "name": "Ham Leadbeater",
-      "travelerType": "relaxer"
+      id: 1,
+      name: "Ham Leadbeater",
+      travelerType: "relaxer",
+      trips: []
     });
   })
 })
