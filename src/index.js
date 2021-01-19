@@ -22,13 +22,18 @@ const sortUserTrips = (trips) => {
   const currentDate = Date.now();
   trips.forEach(trip => {
     const tripDate = new Date(trip.date);
+    let expired = tripDate.getTime() < currentDate;
     if (trip.status === 'pending') {
       domUpdates.hidePendingHeader();
-      let expired = tripDate.getTime() < currentDate;
       domUpdates.addPendingTrip(trip, destinations, expired)
     } else {
-      domUpdates.hidePastHeader();
-      domUpdates.addPastTrip(trip, destinations);
+      if (!expired) {
+        domUpdates.hidePendingHeader();
+        domUpdates.addPendingTrip(trip, destinations, expired)
+      } else {
+        domUpdates.hidePastHeader();
+        domUpdates.addPastTrip(trip, destinations);        
+      }
     }
   })
 }
