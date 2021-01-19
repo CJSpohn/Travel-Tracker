@@ -47,6 +47,7 @@ const onStartup = (userId) => {
       sortUserTrips(currentUser.findUserTrips(trips));
       domUpdates.populateExpenditures(currentUser, destinations);
     })
+    .catch(err => domUpdates.displayLoadError());
     domUpdates.setStartDate();
 }
 
@@ -70,6 +71,7 @@ const onAgentStartup = () => {
       agent = new Agent( { id: 1, name: 'Agent', travelerType: 'Agent' } );
       populateAgentDom(trips, destinations);
     })
+    .catch(err => agentDom.displayLoadError());
 }
 
 const verifyCredentials = () => {
