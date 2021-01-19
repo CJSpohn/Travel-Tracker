@@ -12,9 +12,6 @@ class Agent extends User {
   getPendingTrips(date) {
     return this.trips.filter(trip => {
       const tripDate = new Date(trip.date)
-      console.log(trip)
-      console.log(tripDate)
-      console.log(tripDate > date)
       if (trip.status === 'pending' && tripDate.getTime() > date) {
         return trip;
       }

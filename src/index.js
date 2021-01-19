@@ -74,23 +74,31 @@ const onAgentStartup = () => {
     .catch(err => agentDom.displayLoadError());
 }
 
+const validUsername = (userId, username, password) => {
+  console.log(userId, username)
+  if (parseInt(userId) / 50 <= 1
+    && parseInt(userId) > 0
+    && username.includes('traveler')
+    && username.length === 10) {
+    if (password === 'travel2020') {
+      return true
+    }
+  }
+  return false;
+}
+
 const verifyCredentials = () => {
   let username = document.querySelector('.js-username').value;
   let password = document.querySelector('.js-password').value;
+  let userId = username.slice(-2);
   if (username === 'agency' && password === 'travel2020') {
     agentDom.logInAgent();
     onAgentStartup();
     return
   }
-  let userId = username.slice(-2);
-  if (parseInt(userId) / 50 <= 1
-    && username.includes('traveler')
-    && parseInt(userId) > 0) {
-    if (password === 'travel2020') {
-      domUpdates.logInUser();
-      onStartup(userId);
-      return
-    }
+  if (validUsername(userId, username, password)) {
+    domUpdates.logInUser();
+    onStartup(userId);
   } else {
     domUpdates.displayLogInError();
   }

@@ -84,10 +84,10 @@ let domUpdates = {
 
   setStartDate() {
     const calendar = document.querySelector('.start-date')
-    const today = new Date();
+    let today = new Date();
     let day = today.getDate();
     let month = today.getMonth() + 1;
-    const year = today.getFullYear();
+    let year = today.getFullYear();
     if (day < 10) {
       day = '0' + day
     }
