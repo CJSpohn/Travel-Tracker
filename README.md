@@ -1,5 +1,7 @@
 # Travel Tracker
 
+<img width="1435" alt="Screen Shot 2021-01-19 at 2 51 09 PM" src="https://user-images.githubusercontent.com/69563078/105099697-517acb80-5a69-11eb-8090-16237ed8d57c.png">
+
 The requirements for this project can be found in [this project spec](https://frontend.turing.io/projects/travel-tracker.html)
 
 ## Overview
@@ -54,8 +56,6 @@ __File Structure and Organization__
 ## Using the Site
 
 First, a user arrives at the landing page and is prompted to sign in.
-
-<img width="1435" alt="Screen Shot 2021-01-19 at 2 51 09 PM" src="https://user-images.githubusercontent.com/69563078/105099697-517acb80-5a69-11eb-8090-16237ed8d57c.png">
 
 <img width="1224" alt="Screen Shot 2021-01-19 at 2 51 20 PM" src="https://user-images.githubusercontent.com/69563078/105099706-58094300-5a69-11eb-80bc-34a774e0cbc6.png">
 
