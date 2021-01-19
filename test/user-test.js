@@ -7,7 +7,6 @@ import destinationData from './destinations.js'
 
 let user1, user2, user3;
 
-
 describe('User', () => {
 
   beforeEach(() => {
