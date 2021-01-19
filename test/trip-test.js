@@ -36,5 +36,20 @@ describe('Trip', () => {
     expect(trip4Cost).to.equal('517')
   });
 
+  it('should commafy any number between 4 and 6 digits in the right place', () => {
+    const cost1 = trip1.commafy(6120);
+    expect(cost1).to.equal('6,120')
+    const cost2 = trip1.commafy(16427);
+    expect(cost2).to.equal('16,427')
+  });
+
+  it('should not commafy a number 3 digits or less', () => {
+    const cost1 = trip1.commafy(6);
+    expect(cost1).to.equal('6')
+    const cost2 = trip1.commafy(16);
+    expect(cost2).to.equal('16')
+    const cost3 = trip1.commafy(160);
+    expect(cost3).to.equal('160')
+  })
 
 });
