@@ -75,7 +75,6 @@ const onAgentStartup = () => {
 }
 
 const validUsername = (userId, username, password) => {
-  console.log(userId, username)
   if (parseInt(userId) / 50 <= 1
     && parseInt(userId) > 0
     && username.includes('traveler')
@@ -119,7 +118,7 @@ const verifyInputs = (stringInputs, numberInputs) => {
   return inputsCorrect;
 }
 
-const calculateTrip = () => {
+const buildTrip = () => {
   const destinationName = document.querySelector('.form__list').value;
   const startDate = document.querySelector('.start-date').value.replaceAll('-', '/');
   const travelers = document.querySelector('.travelers').value;
@@ -139,6 +138,11 @@ const calculateTrip = () => {
     date: startDate,
     duration: duration,
   };
+  return tripDetails;
+}
+
+const calculateTrip = () => {
+  const tripDetails = buildTrip();
   currentTrip = new Trip(tripDetails);
   const tripCost = currentTrip.calculateCost(destinations);
   domUpdates.hideFormError();
