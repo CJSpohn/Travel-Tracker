@@ -1,0 +1,102 @@
+// -------------------MEDIA QUERIES-------------------
+
+@media (max-width: 1000px) {
+  .user-wrapper {
+    height: 200vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.5fr 6fr 1.5fr;
+    grid-template-areas:
+    "heading"
+    "user-pending-trips"
+    "user-main-form"
+    "user-past-trips";
+  }
+
+}
+
+@media (max-width: 800px) {
+  .login__wrapper {
+    background-size: 200%;
+  }
+  .form__wrapper {
+    width: 70%;
+  }
+
+  .welcome {
+    display: none;
+  }
+  .login__element-wrapper {
+    position: absolute;
+    left: 25vw;
+    top: 60vh;
+  }
+}
+
+@media (max-width: 560px) {
+  .login__form {
+    height: 60vh;
+  }
+  .login__element-wrapper {
+    position: absolute;
+    left: 10vw;
+    top: 60vh;
+  }
+
+  .login__title {
+    font-size: 3.0rem;
+    font-weight: 700;
+  }
+
+  .sub-title {
+    font-size: 1.4rem;
+  }
+
+  .login__wrapper {
+    background-size: 300%;
+  }
+
+  .login__input {
+    width: 50%;
+  }
+
+  .heading {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .past-trips {
+    grid-area: user-past-trips;
+    padding: 10px;
+    max-width: 90vw;
+  }
+
+  .welcome {
+    margin: 0;
+  }
+
+  .user-wrapper {
+    height: 200vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.5fr 6fr 1.5fr;
+    grid-template-areas:
+    "heading"
+    "user-pending-trips"
+    "user-main-form"
+    "user-past-trips";
+  }
+
+  .form__background {
+    width: 95%;
+  }
+
+  .log-out {
+    margin-bottom: 5px;
+  }
+  .agent__dashboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.6fr 1fr;
+    grid-template-areas:
+      "agent-income"
+      "agent-pending";
+  }
+}

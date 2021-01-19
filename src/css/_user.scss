@@ -1,0 +1,240 @@
+@import './variables';
+// -------------------USER LAYOUT-------------------
+.user-wrapper {
+  display: grid;
+  height: 180vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.4fr 2fr 2fr 1fr;
+  grid-template-areas:
+    "heading heading heading heading"
+    "user-pending-trips user-main-form user-main-form user-main-form"
+    "user-pending-trips user-main-form user-main-form user-main-form"
+    "user-past-trips user-past-trips user-past-trips user-past-trips";
+  grid-gap: 0.2rem;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $heading-color;
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-bottom: 2px solid $border-color;
+  grid-area: heading;
+}
+
+.main-display {
+  grid-area: user-main-form;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.past-trips {
+  grid-area: user-past-trips;
+  padding: 10px;
+  max-width: 93vw;
+}
+
+.pending-trips {
+  grid-area: user-pending-trips;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+// -------------------STYLING-------------------
+
+.main-welcome {
+  font-size: 3rem;
+}
+
+.log-out {
+  margin-right: 5%;
+}
+
+.heading__element-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+}
+
+.heading__button {
+  width: 150px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: 1.4rem;
+  background: $main-color;
+  &:hover {
+    background: $secondary-color;
+  }
+}
+
+.title {
+  margin-left: 5%;
+  font-size: 3rem;
+}
+
+.sub-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.log-in {
+  margin: 5% 0 0 30%;
+}
+
+.logo-span {
+  color: $secondary-color;
+}
+
+.pending-trips__header,
+.past-trips__header {
+  text-align: center;
+}
+
+.main-display__header {
+  margin-top: 4%;
+  font-size: 2rem;
+}
+
+.main-success-text {
+  color: $success;
+  font-size: 2rem;
+}
+
+.main-error-text {
+  color: $failure;
+  font-size: 2rem;
+}
+
+// ------------------FORM-----------------
+.form__background {
+  height: 80%;
+  width: 80%;
+  border-radius: 50px;
+  background-image: url('../images/window-seat.jpg');
+  background-position: 50% 50%;
+  background-size: 200% 200%;
+}
+
+.form__wrapper {
+  @extend .vertical-wrapper;
+  margin: auto;
+  margin-top: 8%;
+  border-radius: 50px;
+  height: 70%;
+  width: 50%;
+  padding: 5%;
+  opacity: 0.8;
+  background-color: white;
+}
+
+.form__input-wrapper {
+  @extend .vertical-wrapper;
+  align-items: center;
+  margin: 2%;
+  background-color: white;
+}
+
+.input__cost-display {
+  font-size: 2em;
+  color: $success;
+}
+
+.form__button {
+  margin-top: 2%;
+  width: 40%;
+}
+
+.form__confirm-buttons-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form {
+  height: 100%;
+  width: 70%;
+  text-align: center;
+}
+
+.form__list {
+  width: 80%;
+}
+
+fieldset {
+  @extend .vertical-wrapper;
+  text-align: center;
+  border-radius: 10px;
+  margin: 2%;
+  background-color: white;
+}
+
+.input__cost-wrapper {
+  height: 30%;
+  margin-top: 15%;
+}
+
+.form__confirmation {
+  font-size: 1.5rem;
+  margin-top: 5%;
+}
+
+.form__error {
+  color: $failure;
+}
+
+.hidden {
+  display: none;
+}
+// ----------------------PENDING TRIPS-------------------
+.pending-trip__status {
+  font-weight: 700;
+}
+
+.pending-trips__trip-wrapper {
+  padding: 5px;
+  margin: 2px;
+}
+
+.pending {
+  color: $failure;
+}
+
+.approved {
+  color: $success;
+}
+
+// ----------------------PAST TRIPS-------------------
+.past-trips__wrapper {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.past-trips__trip {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.past-trips__image {
+  width: 200px;
+}
+
+.past-trips__trip-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.past-trips__expenditures {
+  margin-left: 25%;
+  width: 50vw;
+}
+
+.past-trips__expenditures-text {
+  font-size: 1.5rem;
+  text-align: center;
+}
