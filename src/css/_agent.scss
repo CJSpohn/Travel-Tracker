@@ -1,0 +1,28 @@
+.agent__dashboard {
+  margin-left: 15vw;
+  margin-top: 5vh;
+  display: grid;
+  height: 100vh;
+  width: 70vw;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "agent-income agent-pending";
+  grid-gap: 0.2rem;
+}
+
+.agent__income {
+  text-align: center;
+  grid-area: agent-income;
+}
+
+.agent__pending-trips {
+  text-align: center;
+  grid-area: agent-pending;
+}
+
+.agent__income-amount,
+.agent__trips-taken {
+  font-size: 4rem;
+  color: green;
+}

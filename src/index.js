@@ -2,18 +2,21 @@ import './css/base.scss';
 
 import domUpdates from './domUpdates';
 import apiFetch from './fetch';
+import agentDom from './agentDom';
 
 import Trip from './Trip';
+import Agent from './Agent';
 import User from './User';
 
 const signInButton = document.querySelector('.js-login-form');
+const agentSignOutButton = document.querySelector('.agent-log-out');
 const signOutButton = document.querySelector('.log-out');
 const enterSiteButton = document.querySelector('.js-enter');
 const costButton = document.querySelector('.input__cost-button');
 const confirmTripButton = document.querySelector('.input__confirm-button');
 const clearTripButton = document.querySelector('.input__clear-button');
 
-let currentUser, trips, destinations, currentTrip;
+let currentUser, trips, destinations, currentTrip, users, agent;
 
 const sortUserTrips = (trips) => {
   const currentDate = Date.now();
@@ -34,7 +37,6 @@ const onStartup = (userId) => {
   const usersPromise = apiFetch.getData(`http://localhost:3001/api/v1/travelers/${userId}`);
   const tripsPromise = apiFetch.getData('http://localhost:3001/api/v1/trips');
   const destinationsPromise = apiFetch.getData('http://localhost:3001/api/v1/destinations');
-
   Promise.all([usersPromise, tripsPromise, destinationsPromise])
     .then(promises => {
       currentUser = new User(promises[0]);
@@ -48,9 +50,36 @@ const onStartup = (userId) => {
     domUpdates.setStartDate();
 }
 
+const populateAgentDom = (trips, destinations) => {
+  agent.getTrips(trips);
+  const tripInfoForCalendarYear = agent.getTripCostsForCalendarYear(destinations);
+  agentDom.populateIncome(tripInfoForCalendarYear);
+  const pendingTrips = agent.getPendingTrips(Date.now());
+  pendingTrips.forEach(trip => agentDom.populatePendingTrips(trip, destinations, users))
+}
+
+const onAgentStartup = () => {
+  const usersPromise = apiFetch.getData(`http://localhost:3001/api/v1/travelers`);
+  const tripsPromise = apiFetch.getData('http://localhost:3001/api/v1/trips');
+  const destinationsPromise = apiFetch.getData('http://localhost:3001/api/v1/destinations');
+  Promise.all([usersPromise, tripsPromise, destinationsPromise])
+    .then(promises => {
+      users = promises[0].travelers;
+      trips = promises[1].trips;
+      destinations = promises[2].destinations;
+      agent = new Agent( { id: 1, name: 'Agent', travelerType: 'Agent' } );
+      populateAgentDom(trips, destinations);
+    })
+}
+
 const verifyCredentials = () => {
   let username = document.querySelector('.js-username').value;
   let password = document.querySelector('.js-password').value;
+  if (username === 'agency' && password === 'travel2020') {
+    agentDom.logInAgent();
+    onAgentStartup();
+    return
+  }
   let userId = username.slice(-2);
   if (parseInt(userId) / 50 <= 1
     && username.includes('traveler')
@@ -128,6 +157,10 @@ const postTrip = () => {
   });
 }
 
+const approveTripRequest = () => {
+
+}
+
 costButton.addEventListener('click', calculateTrip);
 confirmTripButton.addEventListener('click', postTrip);
 clearTripButton.addEventListener('click', () => {
@@ -136,5 +169,8 @@ clearTripButton.addEventListener('click', () => {
 signInButton.addEventListener('click', domUpdates.showSignIn);
 enterSiteButton.addEventListener('click', verifyCredentials);
 signOutButton.addEventListener('click', () => {
+  location.reload();
+})
+agentSignOutButton.addEventListener('click', () => {
   location.reload();
 })
