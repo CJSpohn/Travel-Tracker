@@ -9,6 +9,7 @@ import Agent from './Agent';
 import User from './User';
 
 const signInButton = document.querySelector('.js-login-form');
+const agentSignOutButton = document.querySelector('.agent-log-out');
 const signOutButton = document.querySelector('.log-out');
 const enterSiteButton = document.querySelector('.js-enter');
 const costButton = document.querySelector('.input__cost-button');
@@ -54,7 +55,7 @@ const populateAgentDom = (trips, destinations) => {
   const tripInfoForCalendarYear = agent.getTripCostsForCalendarYear(destinations);
   agentDom.populateIncome(tripInfoForCalendarYear);
   const pendingTrips = agent.getPendingTrips(Date.now());
-  pendingTrips.forEach(trip => agentDom.populatePendingTrips(trip))
+  pendingTrips.forEach(trip => agentDom.populatePendingTrips(trip, destinations, users))
 }
 
 const onAgentStartup = () => {
@@ -164,5 +165,8 @@ clearTripButton.addEventListener('click', () => {
 signInButton.addEventListener('click', domUpdates.showSignIn);
 enterSiteButton.addEventListener('click', verifyCredentials);
 signOutButton.addEventListener('click', () => {
+  location.reload();
+})
+agentSignOutButton.addEventListener('click', () => {
   location.reload();
 })
