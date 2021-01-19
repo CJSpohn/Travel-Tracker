@@ -56,7 +56,7 @@ const onAgentStartup = () => {
       users = promises[0].travelers;
       trips = promises[1].trips;
       destinations = promises[2].destinations;
-      
+      agent = new Agent()
     })
 
 }
